@@ -1,3 +1,3 @@
 # SE301
  
-Bu dosya, Hostpital Appointment System içindir.
+Bu dosya, Hospital Appointment System içindir.
