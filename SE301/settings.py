@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Doctor.apps.DoctorConfig',
     'Admin.apps.AdminConfig',
-
+]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
