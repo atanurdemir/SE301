@@ -1,41 +1,6 @@
-<!DOCTYPE html>
-<html>
+{% extends 'base.html' %}
+{% block content %}
+        <h1>Welcome Appointment System Website</h1>
 
-<head>
-    <meta charset="utf-8">
-	<title>Login</title>
-
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
-
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
-
-<link rel="stylesheet" href="styles.css" >
-
-
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
-<body style="background-image: url('doktor2.jpg')">
-<h1 style="text-align: center">HASTANE RANDEVU SİSTEMİ</h1>,
-<h2 style="text-align: center" >Hospital Appointment System</h2>
-<div class="container">
-      <form class="form-signin" method="POST">
-
-        <h2 class="form-signin-heading" style="text-align: center">Giriş Yapın</h2>
-        <div class="input-group">
-	  <span class="input-group-addon" id="basic-addon1">TC. No.</span>
-	  <input type="text" name="username" class="form-control" placeholder=TC Kimlik Numarası required>
-	</div>
-        <label for="inputPassword" class="sr-only">Şifre</label>
-        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Şifre" required>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Giriş Yap</button>
-        <a class="btn btn-lg btn-primary btn-block" href="register.php">Hesabınız yok mu? Kayıt olun!</a>
-        <button class="btn"></button>
-
-      </form>
-</div>
-
-</body>
-
-</html>
+        <p>This is a template</p>
+{% endblock %}
