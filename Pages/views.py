@@ -5,7 +5,7 @@ from django.http import HttpResponse
 def home_view(request,*args, **kwargs):
     print(args,kwargs)
     print(request.user)
-    return render(request, "home.html", {})
+    return render(request, "backup.html", {})
 
 def register_view(request,*args, **kwargs):
     print(args,kwargs)
