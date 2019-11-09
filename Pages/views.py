@@ -11,3 +11,18 @@ def register_view(request,*args, **kwargs):
     print(args,kwargs)
     print(request.user)
     return render(request, "register.html", {})
+
+def admin_view(request,*args, **kwargs):
+    print(args,kwargs)
+    print(request.user)
+    return render(request, "adminPage.html", {})
+
+def doctor_view(request,*args, **kwargs):
+    print(args,kwargs)
+    print(request.user)
+    return render(request, "doctorPage.html", {})
+
+def patient_view(request,*args, **kwargs):
+    print(args,kwargs)
+    print(request.user)
+    return render(request, "patientPage.html", {})
