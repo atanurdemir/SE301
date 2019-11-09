@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'Doctor.apps.DoctorConfig',
     'Admin.apps.AdminConfig',
 
-]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
