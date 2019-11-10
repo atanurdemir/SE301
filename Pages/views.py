@@ -26,3 +26,23 @@ def patient_view(request,*args, **kwargs):
     print(args,kwargs)
     print(request.user)
     return render(request, "patientPage.html", {})
+
+def contact_view(request,*args, **kwargs):
+    print(args,kwargs)
+    print(request.user)
+    return render(request, "contact.html", {})
+
+def forget_view(request,*args, **kwargs):
+    print(args,kwargs)
+    print(request.user)
+    return render(request, "forgetPassword.html", {})
+
+def login_view(request,*args, **kwargs):
+    print(args,kwargs)
+    print(request.user)
+    return render(request, "login.html", {})
+
+def news_view(request,*args, **kwargs):
+    print(args,kwargs)
+    print(request.user)
+    return render(request, "news.html", {})
