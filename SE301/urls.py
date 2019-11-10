@@ -1,8 +1,8 @@
 from django.contrib import admin
 from django.urls import path
-from Pages.views import home_view, register_view, admin_view, doctor_view, patient_view, contact_view, forget_view, \
+from pages.views import home_view, register_view, admin_view, doctor_view, patient_view, contact_view, forget_view, \
     login_view, news_view
-
+from django.conf.urls import url, include
 from django.views.generic import TemplateView
 
 urlpatterns = [
@@ -17,4 +17,5 @@ urlpatterns = [
     path('patientPage/', patient_view),
     path('bootstrap/', TemplateView.as_view(template_name='bootstrap/example.html')),
     path('admin/', admin.site.urls),
+    url(r'accounts/', include('accounts.urls'))
 ]
