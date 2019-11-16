@@ -1,20 +1,21 @@
 from django.contrib import admin
 from django.urls import path
-from pages.views import home_view, register_view, admin_view, doctor_view, patient_view, contact_view, forget_view, \
-    login_view, news_view
+from Pages.views import home_view, admin_view, doctor_view, patient_view, contact_view, forget_view, news_view
 from django.conf.urls import url, include
 from django.views.generic import TemplateView
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from accounts.views import login_view, signup_view
+
 urlpatterns = [
     path('', home_view, name='home'),
-    path('contact/', contact_view),
-    path('forgetPassword/', forget_view),
+    url(r'^contact/$', contact_view, name="contact"),
+    url(r'^forgetPassword/$', forget_view, name="forgetPassword"),
     path('login/', login_view),
-    path('news/', news_view),
-    path('register/', register_view),
-    path('adminPage/', admin_view),
-    path('doctorPage/', doctor_view),
-    path('patientPage/', patient_view),
+    url(r'^news/$', news_view, name="news"),
+    url(r'^signup/$', signup_view, name="signup"),
+    url(r'^adminPage/$', admin_view, name="admin"),
+    url(r'^doctorPage/$', doctor_view, name="doctor"),
+    url(r'^patientPage/$', patient_view, name="patient"),
     path('bootstrap/', TemplateView.as_view(template_name='bootstrap/example.html')),
     path('admin/', admin.site.urls),
     url(r'^accounts/', include('accounts.urls')),
