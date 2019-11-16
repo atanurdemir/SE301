@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from pages.views import home_view, register_view, admin_view, doctor_view, patient_view, contact_view, forget_view, \
+from Pages.views import home_view, register_view, admin_view, doctor_view, patient_view, contact_view, forget_view, \
     login_view, news_view
 from django.conf.urls import url, include
 from django.views.generic import TemplateView
