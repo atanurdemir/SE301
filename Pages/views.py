@@ -10,7 +10,7 @@ def home_view(request,*args, **kwargs):
 def register_view(request,*args, **kwargs):
     print(args,kwargs)
     print(request.user)
-    return render(request, "register.html", {})
+    return render(request, "signup.html", {})
 
 def admin_view(request,*args, **kwargs):
     print(args,kwargs)
