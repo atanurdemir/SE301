@@ -7,11 +7,6 @@ def home_view(request,*args, **kwargs):
     print(request.user)
     return render(request, "home.html", {})
 
-def register_view(request,*args, **kwargs):
-    print(args,kwargs)
-    print(request.user)
-    return render(request, "signup.html", {})
-
 def admin_view(request,*args, **kwargs):
     print(args,kwargs)
     print(request.user)
@@ -36,11 +31,6 @@ def forget_view(request,*args, **kwargs):
     print(args,kwargs)
     print(request.user)
     return render(request, "forgetPassword.html", {})
-
-def login_view(request,*args, **kwargs):
-    print(args,kwargs)
-    print(request.user)
-    return render(request, "login.html", {})
 
 def news_view(request,*args, **kwargs):
     print(args,kwargs)
