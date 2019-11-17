@@ -1,75 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+{% extends 'base.html' %}
+{% block title %}
     <title>Homepage</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <style>
-        /* Remove the navbar's default rounded borders and increase the bottom margin */
-        .navbar {
-            margin-bottom: 50px;
-            border-radius: 0;
-        }
+{% endblock %}
 
-        /* Remove the jumbotron's default bottom margin */
-        .jumbotron {
-            background-image: url("http://i.hizliresim.com/86OB8a.jpg")
-        }
+{% block menuTitle %}
+    <h1>Appointment System</h1>
+    <p>This is a national appointment system.</p>
+{% endblock %}
 
-        /* Add a gray background color and some padding to the footer */
-        footer {
-            background-color: #f2f2f2;
-            padding: 25px;
-        }
-    </style>
-</head>
-<body>
+{% block leftNavbar %}
+    <li class="active"><a>Home</a></li>
+    <li><a href="{% url "news" %}">News</a></li>
+    <li><a href="{% url "contact" %}">Contact</a></li>
+{% endblock %}
 
-<div class="jumbotron">
-
-    <div class="container text-center">
-        <h1>Appointment System</h1>
-        <p>This is a national appointment system.</p>
-    </div>
-</div>
-
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Logo</a>
-        </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav">
-                <li class="active"><a>Home</a></li>
-                <li><a href="{% url "news" %}">News</a></li>
-                <li><a href="{% url "contact" %}">Contact</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"><span
-                            class="glyphicon glyphicon-user"></span> Member Transaction</a>
-                    <div class="dropdown-menu dropdown-menu-right" style="position:absolute;min-width:175px;">
-                        <a class="dropdown-item" href="{% url "login" %}">Login</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{% url "signup" %}">Register</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{% url "forgetPassword" %}">Forget Password</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
-<div class="container">
+{% block container %}
     <div class="row">
         <div class="col-sm-4">
             <div class="panel panel-primary">
@@ -96,10 +41,8 @@
             </div>
         </div>
     </div>
-</div>
-<br>
-
-<div class="container">
+{% endblock %}
+{% block container2 %}
     <div class="row">
         <div class="col-sm-4">
             <div class="panel panel-primary">
@@ -126,16 +69,12 @@
             </div>
         </div>
     </div>
-</div>
-<br><br>
+{% endblock %}
 
-<footer class="container-fluid text-center">
+{% block containerFluid %}
     <p>Online Store Copyright</p>
     <form class="form-inline">Get deals:
         <input type="email" class="form-control" size="50" placeholder="Email Address">
         <button type="button" class="btn btn-danger">Sign Up</button>
     </form>
-</footer>
-
-</body>
-</html>
+{% endblock %}

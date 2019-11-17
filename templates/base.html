@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Homepage</title>
+    {% block title %}
+    {% endblock %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -31,8 +32,8 @@
 <div class="jumbotron">
 
     <div class="container text-center">
-        <h1>Appointment System</h1>
-        <p>This is a national appointment system.</p>
+        {% block menuTitle %}
+        {% endblock %}
     </div>
 </div>
 
@@ -41,16 +42,13 @@
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                 <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#">Logo</a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li><a href="{% url "home" %}">Home</a></li>
-                <li><a href="{% url "news" %}">News</a></li>
-                <li><a href="{% url "contact" %}">Contact</a></li>
+                {% block leftNavbar %}
+                {% endblock %}
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="nav-item dropdown">
@@ -70,58 +68,20 @@
 </nav>
 
 <div class="container">
-      <form class="form-signin" method="POST">
-            {% block content %}
-                <h1>Login</h1>
-                <h1></h1>
-                <form class="site-form" action="/accounts/login/" method="post">
-                    {% csrf_token %}
-                    {{ form }}
-                    <input type="submit" value="Login"/>
-                </form>
-                <h1></h1>
-                <p>Not got an account? <a href="/accounts/signup/">Sign Up</a></p>
-            {% endblock %}
-        </form>
+    {% block container %}
+    {% endblock %}
 </div>
 <br>
 
 <div class="container">
-    <div class="row">
-        <div class="col-sm-4">
-            <div class="panel panel-primary">
-                <div class="panel-heading">BLACK FRIDAY DEAL</div>
-                <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive"
-                                             style="width:100%" alt="Image"></div>
-                <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="panel panel-primary">
-                <div class="panel-heading">BLACK FRIDAY DEAL</div>
-                <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive"
-                                             style="width:100%" alt="Image"></div>
-                <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="panel panel-primary">
-                <div class="panel-heading">BLACK FRIDAY DEAL</div>
-                <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive"
-                                             style="width:100%" alt="Image"></div>
-                <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
-            </div>
-        </div>
-    </div>
+    {% block container2 %}
+    {% endblock %}
 </div>
 <br><br>
 
 <footer class="container-fluid text-center">
-    <p>Online Store Copyright</p>
-    <form class="form-inline">Get deals:
-        <input type="email" class="form-control" size="50" placeholder="Email Address">
-        <button type="button" class="btn btn-danger">Sign Up</button>
-    </form>
+    {% block containerFluid %}
+    {% endblock %}
 </footer>
 
 </body>
