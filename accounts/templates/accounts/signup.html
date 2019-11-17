@@ -1,27 +1,20 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Login Page</title>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Homepage</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-            crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-            crossorigin="anonymous"></script>
     <style>
+        /* Remove the navbar's default rounded borders and increase the bottom margin */
+        .navbar {
+            margin-bottom: 50px;
+            border-radius: 0;
+        }
+
+        /* Remove the jumbotron's default bottom margin */
         .jumbotron {
             background-image: url("http://i.hizliresim.com/86OB8a.jpg")
         }
@@ -32,19 +25,51 @@
             padding: 25px;
         }
     </style>
-
-    <div class="jumbotron">
-
-        <div class="container text-center">
-            <h1>Appointment System</h1>
-            <p>Register for everyone.</p>
-        </div>
-    </div>
-
 </head>
 <body>
-<center>
-    <div class="container">
+
+<div class="jumbotron">
+
+    <div class="container text-center">
+        <h1>Appointment System</h1>
+        <p>This is a national appointment system.</p>
+    </div>
+</div>
+
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Logo</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="{% url "news" %}">News</a></li>
+                <li><a href="{% url "contact" %}">Contact</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"><span
+                            class="glyphicon glyphicon-user"></span> Member Transaction</a>
+                    <div class="dropdown-menu dropdown-menu-right" style="position:absolute;min-width:175px;">
+                        <a class="dropdown-item" href="{% url "login" %}">Login</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url "signup" %}">Register</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url "forgetPassword" %}">Forget Password</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
         <form class="form-signin" method="POST">
             {% block content %}
                 <h1>Signup</h1>
@@ -58,8 +83,45 @@
             {% endblock %}
         </form>
     </div>
-</center>
+<br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">BLACK FRIDAY DEAL</div>
+                <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive"
+                                             style="width:100%" alt="Image"></div>
+                <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">BLACK FRIDAY DEAL</div>
+                <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive"
+                                             style="width:100%" alt="Image"></div>
+                <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">BLACK FRIDAY DEAL</div>
+                <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive"
+                                             style="width:100%" alt="Image"></div>
+                <div class="panel-footer">Buy 50 mobiles and get a gift card</div>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br>
+
+<footer class="container-fluid text-center">
+    <p>Online Store Copyright</p>
+    <form class="form-inline">Get deals:
+        <input type="email" class="form-control" size="50" placeholder="Email Address">
+        <button type="button" class="btn btn-danger">Sign Up</button>
+    </form>
+</footer>
 
 </body>
-
 </html>
