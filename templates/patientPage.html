@@ -6,21 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
-    <link rel="stylesheet" href="styles.css" >
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
     <title>Appointment Page</title>
 
     <style>
@@ -44,19 +55,29 @@
 
     <div class="jumbotron">
 
-    <div class="container text-center">
-        <h1>Appointment System</h1>
-        <p>This is a national appointment system.</p>
+        <div class="container text-center">
+            <h1>Appointment System</h1>
+            <p>This is a national appointment system.</p>
+        </div>
     </div>
-</div>
-
-    <nav class="navbar navbar-inverse">
+</head>
+<body>
+<!-- Navigation Bar -->
+<nav class="navbar navbar-inverse">
     <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Logo</a>
+        </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Personal Informations</a></li>
-                <li><a>Future Appointments</a></li>
-                <li><a>Appointment History</a></li>
+                <li><a href="#" data-toggle="modal" data-target="#infoModal">Personal Informations</a></li>
+                <li><a href="#" data-toggle="modal" data-target="#futureAppModal">Future Appointments</a></li>
+                <li><a href="#" data-toggle="modal" data-target="#appHistoryModal">Appointment History</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="nav-item dropdown">
@@ -72,76 +93,262 @@
         </div>
     </div>
 </nav>
-</head>
-<body>
-    <div class="container-fluid">
-  <div class="row">
-   <div class="col-md-6 col-sm-6 col-xs-12">
 
-    <form method="post">
-      <div class="form-group">
-        <label class="control-label" for="date">Date</label>
-        <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text"/>
-      </div>
-        <select class="custom-select custom-select-lg mb-3">
-            <option selected>Province</option>
-        </select>
-        <select class="custom-select custom-select-lg mb-3">
-            <option selected>District</option>
-        </select>
-        <select class="custom-select custom-select-lg mb-3">
-            <option selected>Clinic</option>
-        </select>
-        <select class="custom-select custom-select-lg mb-3">
-            <option selected>Hospital</option>
-        </select>
-         <select class="custom-select custom-select-lg mb-3">
-            <option selected>Neighborhood Polyclinc</option>
-        </select>
-         <select class="custom-select custom-select-lg mb-3">
-            <option selected>Examintaion Location</option>
-        </select>
-         <select class="custom-select custom-select-lg mb-3">
-            <option selected>Doctor</option>
-        </select>
-        <a class="btn btn-lg btn-primary btn-block" href="../patientPage">Reset</a>
-        <a class="btn btn-lg btn-primary btn-block" href="register">Search</a>
-        <button class="btn"></button>
-     </form>
+<!--Personal Informations Modal -->
+<div id="infoModal" class="modal" tabindex="-1" role="dialog" aria-labelledby="infoModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Personal Informations</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="align-self: end">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="firstName">First Name</label>
+                            <input type="text" class="form-control" id="firstName" placeholder="First Name">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" class="form-control" id="lastName" placeholder="Last Name">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="inputAddress">Address</label>
+                            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="id">ID Number</label>
+                            <input type="text" class="form-control" id="id" placeholder="ID Number">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="age">Age</label>
+                            <input type="text" class="form-control" id="age" placeholder="Age">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="gender">Gender</label>
+                            <input type="text" class="form-control" id="gender" placeholder="Gender">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Email">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="number">Phone Number</label>
+                            <input type="tel" class="form-control" id="number" placeholder="Phone Number">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-link" style="align-self: flex-start">Change Password</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success">Save Changes</button>
+            </div>
+        </div>
     </div>
-  </div>
- </div>
+</div>
+
+<!--Future Appointments Modal -->
+<div id="futureAppModal" class="modal" tabindex="-1" role="dialog" aria-labelledby="futureAppModal"
+     aria-hidden="true" style="width: 90%;">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Future Appointments</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="align-self: end">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Hospital Name</th>
+                        <th scope="col">Clinic</th>
+                        <th scope="col">Location</th>
+                        <th scope="col">Doctor Name</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Appointment History Modal -->
+<div id="appHistoryModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="appHistoryModal"
+     aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">Future Appointments</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="align-self: end">
+                    &times;
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Hospital Name</th>
+                        <th scope="col">Clinic</th>
+                        <th scope="col">Location</th>
+                        <th scope="col">Doctor Name</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+
+                    </tr>
+                    <tr>
+                        <th scope="row">2</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<!-- Appointment Part -->
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="mx-auto" style="width: 500px;">
+            <form method="post">
+                <div class="form-group">
+                    <label class="control-label" for="date">Date</label>
+                    <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text"/>
+                </div>
+                <label class="control-label" for="date">Province</label>
+                <select class="custom-select custom-select-lg mb-3">
+                    <option selected>Province</option>
+                </select>
+                <label class="control-label" for="date">District</label>
+                <select class="custom-select custom-select-lg mb-3">
+                    <option selected>District</option>
+                </select>
+                <label class="control-label" for="date">Clinic</label>
+                <select class="custom-select custom-select-lg mb-3">
+                    <option selected>Clinic</option>
+                </select>
+                <label class="control-label" for="date">Hospital</label>
+                <select class="custom-select custom-select-lg mb-3">
+                    <option selected>Hospital</option>
+                </select>
+                <label class="control-label" for="date">Neighborhood Polyclinic</label>
+                <select class="custom-select custom-select-lg mb-3">
+                    <option selected>Neighborhood Polyclinc</option>
+                </select>
+                <label class="control-label" for="date">Location</label>
+                <select class="custom-select custom-select-lg mb-3">
+                    <option selected>Examintaion Location</option>
+                </select>
+                <label class="control-label" for="date">Doctor</label>
+                <select class="custom-select custom-select-lg mb-3">
+                    <option selected>Doctor</option>
+                </select>
+                <a class="btn btn-lg btn-primary btn-block" href="#">Reset</a>
+                <a class="btn btn-lg btn-primary btn-block" href="#">Search</a>
+                <button class="btn"></button>
+            </form>
+        </div>
+    </div>
 </div>
 </body>
 
 <script>
-    $(document).ready(function(){
-      var date_input=$('input[name="date"]');
-      var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-      var options={
-        format: 'mm/dd/yyyy',
-        container: container,
-        todayHighlight: true,
-        autoclose: true,
-      };
-      date_input.datepicker(options);
-    })
-</script>
-
-<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
-
-<script>
-    $(document).ready(function(){
-        var date_input=$('input[name="date"]'); //our date input has the name "date"
-        var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-        date_input.datepicker({
+    $(document).ready(function () {
+        var date_input = $('input[name="date"]');
+        var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+        var options = {
             format: 'mm/dd/yyyy',
             container: container,
             todayHighlight: true,
             autoclose: true,
-        })
+        };
+        date_input.datepicker(options);
     })
 </script>
+
+
 </html>
