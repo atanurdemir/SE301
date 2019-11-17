@@ -17,7 +17,7 @@ def login_view(request):
         form = AuthenticationForm(data=request.POST)
         if form.is_valid():
             # log the user in
-            return redirect('doctor')
+            return redirect('appointments:list')
     else:
         form = AuthenticationForm()
     return render(request, 'accounts/login.html', { 'form': form })
