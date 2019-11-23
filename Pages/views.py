@@ -25,9 +25,12 @@ def doctor_view(request, *args, **kwargs):
     return render(request, "doctorPage.html", {})
 
 def patient_view(request, *args, **kwargs):
+    return render(request, "patientPage.html", {'patients': patient_view()})
+
+def patient_view(request, *args, **kwargs):
     print(args, kwargs)
     print(request.user)
-    return render(request, "patientPage.html", {'patients': patient_view()})
+    return render(request, "patientPage.html", {})
 
 
 def contact_view(request, *args, **kwargs):
