@@ -1,11 +1,10 @@
 # SE301
  
-Bu proje, "Hospital Appointment System" içindir.
+This project is a new site based on the hospital appointment system.
 
 
 
-
-# Projede İş Bölümü
+# Work Sharing
 
 Atanur:
 
@@ -14,3 +13,5 @@ Atanur:
 		2. Templates, Template Inheritance (All template htmls[base.html, home.html ext], folders ext.)
 		
 		3. DoctorPage and It's Functions [Pull/Push Data from Database]
+		
+		4. Database Connections for DoctorPage
