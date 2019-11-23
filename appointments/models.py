@@ -2,7 +2,7 @@ from django.db import models
 
 class Appointment(models.Model):
     Date = models.DateField()
-    time = models.DateTimeField(auto_now_add=True)
+    time = models.TimeField(auto_now_add=True)
     PatientName = models.CharField(max_length=40)
     DoctorName = models.CharField(max_length=40)
 
