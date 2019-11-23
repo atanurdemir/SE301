@@ -9,8 +9,8 @@ Bu proje, "Hospital Appointment System" içindir.
 
 Atanur:
 
-		1. Handle User Authentication(Acconts: forms.py, models.py, views.py || Pages: views.py || SE301: urls.py)
+		1. Handle User Authentication (Acconts: forms.py, models.py, views.py || Pages: views.py || SE301: urls.py)
 		
-		2. Templates, Template Inheritance (All Templates htmls, folders ext.)
+		2. Templates, Template Inheritance (All template htmls[base.html, home.html ext], folders ext.)
 		
-		3. DoctorPage and It's Functions
+		3. DoctorPage and It's Functions [Pull/Push Data from Database]
