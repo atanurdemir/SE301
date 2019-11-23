@@ -4,7 +4,7 @@ from Pages.views import home_view, admin_view, doctor_view, patient_view, contac
 from django.conf.urls import url, include
 from django.views.generic import TemplateView
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from accounts.views import login_view, signup_view
+from accounts.views import login_view, register_view
 
 urlpatterns = [
     path('', home_view, name='home'),
@@ -12,7 +12,7 @@ urlpatterns = [
     url(r'^forgetPassword/$', forget_view, name="forgetPassword"),
     path('login/', login_view),
     url(r'^news/$', news_view, name="news"),
-    url(r'^signup/$', signup_view, name="signup"),
+    url(r'^signup/$', register_view, name="signup"),
     url(r'^adminPage/$', admin_view, name="admin"),
     url(r'^doctorPage/$', doctor_view, name="doctor"),
     url(r'^patientPage/$', patient_view, name="patient"),
