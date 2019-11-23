@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block title %}
+    {% endblock %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <style>
+        /* Remove the navbar's default rounded borders and increase the bottom margin */
+        .navbar {
+            margin-bottom: 50px;
+            border-radius: 0;
+        }
+
+        /* Remove the jumbotron's default bottom margin */
+        .jumbotron {
+            background-image: url("http://i.hizliresim.com/86OB8a.jpg")
+        }
+
+        .jumbotron2 {
+            background-image: url("https://digitalsynopsis.com/wp-content/uploads/2017/03/beautiful-color-gradients-backgrounds-078-cochiti-lake.png");
+            min-height: 100%;
+            min-width: 100%;
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            overflow-y: hidden;
+            overflow-x: hidden;
+        }
+
+        /* Add a gray background color and some padding to the footer */
+        footer {
+            background-color: #f2f2f2;
+            padding: 25px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="jumbotron">
+    <div class="container text-center">
+        {% block menuTitle %}
+        {% endblock %}
+    </div>
+</div>
+
+<div class="jumbotron2">
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <a class="navbar-brand">
+            <img src="http://demo.joomlabuff.com/hospital/images/logo.png" alt="Logo" style="width:250px;"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="navbarNavDropdown" class="navbar-collapse collapse">
+            <ul class="navbar-nav mr-auto">
+                {% block leftNavbar %}
+                {% endblock %}
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Member Transactions
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="{% url "login" %}">Login</a>
+                        <a class="dropdown-item" href="{% url "signup" %}">Register</a>
+                        <a class="dropdown-item" href="{% url "forgetPassword" %}">Forget Password</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <div class="container">
+        {% block container %}
+        {% endblock %}
+    </div>
+    <br>
+
+    <div class="container">
+        <form class="form-signin" method="POST">
+            {% block login %}
+            {% endblock %}
+        </form>
+    </div>
+
+    <div class="container">
+        <form class="form-signin" method="POST">
+            {% block register %}
+            {% endblock %}
+        </form>
+    </div>
+
+    <div class="container">
+        {% block container2 %}
+        {% endblock %}
+    </div>
+
+</div>
+<footer class="container-fluid text-center">
+    {% block containerFluid %}
+    {% endblock %}
+</footer>
+
+</body>
+</html>
