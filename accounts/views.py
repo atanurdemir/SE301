@@ -11,11 +11,9 @@ def login_view(request):
         password = form.cleaned_data.get('password')
         user = authenticate(username=username, password=password)
         login(request, user)
-        if get_user_model('doctor'):
-            return redirect('doctor')
-        if get_user_model('patient'):
-            return redirect('patient')
-
+        if next:
+            return redirect(next)
+        return redirect('doctor')
     context = {
         'form': form,
     }
@@ -33,7 +31,7 @@ def register_view(request):
         login(request, new_user)
         if next:
             return redirect(next)
-        return redirect('/')
+        return redirect('home')
 
     context = {
         'form': form,

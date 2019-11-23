@@ -15,10 +15,14 @@ def admin_view(request, *args, **kwargs):
     return render(request, "adminPage.html", {})
 
 
+def doctor_view(request):
+    return render(request, 'doctorPage.html', {'doctors': doctor_view()})
+
+
 def doctor_view(request, *args, **kwargs):
     print(args, kwargs)
     print(request.user)
-    return render(request, 'doctorPage.html', {'doctors': doctor_view()})
+    return render(request, "doctorPage.html", {})
 
 def patient_view(request, *args, **kwargs):
     print(args, kwargs)
