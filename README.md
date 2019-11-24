@@ -15,3 +15,5 @@ Atanur:
 		3. DoctorPage and It's Functions [Pull/Push Data from Database]
 		
 		4. Database Connections for DoctorPage
+		
+		5. Online Hosting Installation via 'Heroku' [http://se301.herokuapp.com]
