@@ -21,7 +21,7 @@ Taha:
 
 		1. User Authentications (Login, Register etc.)
 		
-		2. Admin Page and functions (Processing data from database, editing and deleting appointments, doctor profiles, hospital 		    profiles, blocking users)
+		2. Admin Page and functions (Processing data from database, editing and deleting appointments, doctor profiles, hospital 		 profiles, blocking users)
 		
 		3. Implementation of appointment and hospitals databases, appointment handling.
 		
