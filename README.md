@@ -8,12 +8,10 @@ This project is a new site based on the hospital appointment system.
 
 Atanur:
 
-		1. Handle User Authentication (Acconts: forms.py, models.py, views.py || Pages: views.py || SE301: urls.py)
+		1. Templates, Template Inheritance (All template htmls[base.html, home.html ext], folders ext.)
 		
-		2. Templates, Template Inheritance (All template htmls[base.html, home.html ext], folders ext.)
+		2. DoctorPage and It's Functions [Pull/Push Data from Database]
 		
-		3. DoctorPage and It's Functions [Pull/Push Data from Database]
+		3. Database Connections for DoctorPage
 		
-		4. Database Connections for DoctorPage
-		
-		5. Online Hosting Installation via 'Heroku' [http://se301.herokuapp.com]
+		4. Online Hosting Installation via 'Heroku' [http://se301.herokuapp.com]
