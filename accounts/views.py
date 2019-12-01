@@ -39,7 +39,7 @@ def register_view(request):
         user.groups.add(group)
         if next:
             return redirect(next)
-        return redirect('home')
+        return redirect('login')
 
     context = {
         'form': form,
@@ -59,7 +59,7 @@ def register_view2(request):
         user.groups.add(group)
         if next:
             return redirect(next)
-        return redirect('home')
+        return redirect('login')
 
     context = {
         'form': form,
