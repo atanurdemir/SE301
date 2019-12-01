@@ -26,3 +26,11 @@ Taha:
 		3. Implementation of appointment and hospitals databases, appointment handling.
 		
 		4. Database connections for Admin Page (Search, Delete, Add etc. queries implementation)
+
+Alp:
+
+        1. Patient Page and its functions 
+        
+        2. Database connection for PatientPage
+        
+        3. Sending e-mail to the user for changing password and reminder for upcoming appointment
