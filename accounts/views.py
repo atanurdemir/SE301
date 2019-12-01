@@ -17,7 +17,7 @@ def login_view(request):
         user = authenticate(username=username, password=password)
         login(request, user)
         user_groups = list(request.user.groups.values_list('name', flat=True))
-        if 'Doctor' in user_groups:
+        if 'doctor' in user_groups:
             return redirect(reverse('doctor'))
         else:
             return redirect(reverse('patient'))
