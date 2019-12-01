@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    <title>Doctor Mainpage</title>
+    <title>Doctor MainPage</title>
 {% endblock %}
 
 {% block menuTitle %}
@@ -12,79 +12,100 @@
 {% block leftNavbar %}
     <ul class="navbar-nav">
         <li class="nav-item">
-            <a class="nav-link disabled" href="">MainPage</a>
+            <a class="nav-link" href="{% url "home" %}">MainPage</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#" data-toggle="modal" data-target="#viewAppointments">View Appointments</a>
+            <a class="nav-link" href="#">Account</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#" data-toggle="modal" data-target="#reportPatient">Report Patient</a>
+            <a class="nav-link" href="#">Help Center</a>
         </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#" data-toggle="modal" data-target="#searchPatient">Search Patient</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#" data-toggle="modal" data-target="#givePrescription">Give Prescription</a>
-    </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+        </li>
     </ul>
 {% endblock %}
 
-{% block container %}
-<div class="card-columns">
-  <div class="card bg-primary">
-    <div class="card-body text-center">
-      <p class="card-text">Some text inside the first card</p>
-    </div>
-  </div>
-  <div class="card bg-warning">
-    <div class="card-body text-center">
-      <p class="card-text">Some text inside the second card</p>
-    </div>
-  </div>
-  <div class="card bg-success">
-    <div class="card-body text-center">
-      <p class="card-text">Some text inside the third card</p>
-    </div>
-  </div>
-  <div class="card bg-danger">
-    <div class="card-body text-center">
-      <p class="card-text">Some text inside the fourth card</p>
-    </div>
-  </div>
-  <div class="card bg-light">
-    <div class="card-body text-center">
-      <p class="card-text">Some text inside the fifth card</p>
-    </div>
-  </div>
-  <div class="card bg-info">
-    <div class="card-body text-center">
-      <p class="card-text">Some text inside the sixth card</p>
-    </div>
-  </div>
-</div>
+{% block rightNavbar %}
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink"
+           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Member Transactions
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="">Logout</a>
+        </div>
+    </li>
 {% endblock %}
-{% block container2 %}
-        <div class="col-sm-4">
-        <div class="panel panel-primary">
-            <div class="panel-heading"></div>
-            <div class="panel-body"></div>
-            <div class="panel-footer"></div>
+
+{% block container %}
+
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card gradient-card">
+                <div class="card-image bg-custom-2"
+                     style="background-image: url(https://wallpaperaccess.com/full/1282799.jpg)">
+
+                    <a href="#!">
+                        <div class="text-white d-flex h-100 mask blue-gradient-rgba" data-toggle="modal"
+                             data-target="#viewAppointments">
+                            <div class="first-content align-self-center p-3">
+                                <h3 class="card-title">View Appointments</h3>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="col-sm-4">
-        <div class="panel panel-primary">
-            <div class="panel-heading"></div>
-            <div class="panel-body"></div>
-            <div class="panel-footer"></div>
+        <div class="col-md-6 mb-4">
+            <div class="card gradient-card">
+                <div class="card-image"
+                     style="background-image: url(https://wallpaperaccess.com/full/1282799.jpg);">
+                    <a href="#!">
+                        <div class="text-white d-flex h-100 mask purple-gradient-rgba" data-toggle="modal"
+                             data-target="#reportPatient">
+                            <div class="first-content align-self-center p-3">
+                                <h3 class="card-title">Report Patient</h3>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="col-sm-4">
-        <div class="panel panel-primary">
-            <div class="panel-heading"></div>
-            <div class="panel-body"></div>
-            <div class="panel-footer"></div>
+
+        <div class="col-md-6 mb-4">
+            <div class="card gradient-card">
+
+                <div class="card-image"
+                     style="background-image: url(https://wallpaperaccess.com/full/1282799.jpg);">
+
+                    <a href="#!">
+                        <div class="text-white d-flex h-100 mask peach-gradient-rgba" data-toggle="modal"
+                             data-target="#searchPatient">
+                            <div class="first-content align-self-center p-3">
+                                <h3 class="card-title">Search Patient</h3>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
         </div>
-    </div>
+        <div class="col-md-6 mb-4">
+            <div class="card gradient-card">
+
+                <div class="card-image"
+                     style="background-image: url(https://wallpaperaccess.com/full/1282799.jpg);">
+
+                    <a href="#!">
+                        <div class="text-white d-flex h-100 mask aqua-gradient-rgba" data-toggle="modal" data-target="#givePrescription">
+                            <div class="first-content align-self-center p-3">
+                                <h3 class="card-title">Give Prescription</h3>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}
 
