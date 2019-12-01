@@ -22,6 +22,21 @@
     </ul>
 {% endblock %}
 
+{% block rightNavbar %}
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink"
+           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Member Transactions
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="{% url "login" %}">Login</a>
+            <a class="dropdown-item" href="{% url "signup" %}">Register for Doctor</a>
+            <a class="dropdown-item" href="{% url "signup2" %}">Register for Patient</a>
+            <a class="dropdown-item" href="{% url "forgetPassword" %}">Forget Password</a>
+        </div>
+    </li>
+{% endblock %}
+
 {% block container %}
     <div class="card-columns">
         <div class="card">
