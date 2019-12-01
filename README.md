@@ -30,3 +30,11 @@ Taha:
 		4. Database connections for Admin Page (Search, Delete, Add etc. queries implementation)
 		
 		5. Database Setup (Admin, Hospital, Patient, UserProfile, Appointment, ext. tables and their attiributes with connections)
+
+Alp: 
+
+        1. Patient page and functions 
+        
+        2. Database conncection of Patient Page
+        
+        3. Sending e-mail to the user for changing password and reminder for upcoming appointments.

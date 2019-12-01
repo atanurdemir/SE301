@@ -51,3 +51,14 @@ class UserRegisterForm(forms.ModelForm):
             raise forms.ValidationError(
                 "This email has already been registered")
         return super(UserRegisterForm, self).clean(*args, **kwargs)
+
+
+class UserForgotPasswordForm(forms.Form):
+    email = forms.EmailField(label='Email address')
+
+    def clean(self, *args, **kwargs):
+        email = self.cleaned_data.get('email')
+        email_qs = User.objects.filter(email=email)
+        if not email_qs.exists():
+            raise forms.ValidationError("This email is not registered")
+        return super(UserForgotPasswordForm, self).clean(*args, **kwargs)

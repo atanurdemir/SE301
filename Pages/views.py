@@ -49,7 +49,7 @@ def contact_view(request, *args, **kwargs):
 def forget_view(request, *args, **kwargs):
     print(args, kwargs)
     print(request.user)
-    return render(request, "forgetPassword.html", {})
+    return render(request, "accounts/forgetPassword.html", {})
 
 
 def news_view(request, *args, **kwargs):
