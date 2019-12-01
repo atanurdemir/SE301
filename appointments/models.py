@@ -1,6 +1,7 @@
 from django.db import models
 from accounts.models import *
 
+
 class Appointment(models.Model):
     Date = models.DateField()
     time = models.TimeField(auto_now_add=True)
@@ -10,12 +11,3 @@ class Appointment(models.Model):
     province = models.CharField(max_length=40)
     clinic = models.CharField(max_length=40)
     hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE)
-
-
-
-
-    def __str__(self):
-     return self.PatientName, self.DoctorName, self.Date
-
-    def snippet(self):
-        return self.PatientName[:15]
