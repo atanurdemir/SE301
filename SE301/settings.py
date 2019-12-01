@@ -80,10 +80,10 @@ WSGI_APPLICATION = 'SE301.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'django',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost',
+        'NAME': 'heroku_2b72da0cbefbafb',
+        'USER': 'b5382e65e06c28',
+        'PASSWORD': '78393a8d',
+        'HOST': 'eu-cdbr-west-02.cleardb.net',
         'PORT': '3306',
         'OPTIONS': {
             'sql_mode': 'traditional',
@@ -139,3 +139,5 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
+
+LOGIN_REDIRECT_URL = "login_view"
