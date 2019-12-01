@@ -11,3 +11,10 @@ class Appointment(models.Model):
     province = models.CharField(max_length=40)
     clinic = models.CharField(max_length=40)
     hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE)
+
+
+    def __str__(self):
+       return f'{self.patient}{self.doctor}{self.Date}{self.time}'
+
+    def snippet(self):
+        return self.patient[:15]
