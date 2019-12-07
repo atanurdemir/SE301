@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    <title>Login Page</title>
+    <title>Register Page</title>
 {% endblock %}
 
 {% block menuTitle %}
-    <h1>Appointment System</h1>
-    <p>This is a national appointment system's login page.</p>
+    <h1>Register a Patient</h1>
+    <p>This is a register page for patient.</p>
 {% endblock %}
 
 {% block leftNavbar %}
@@ -26,7 +26,7 @@
 {% block register %}
     <h1>Signup</h1>
 
-    <form class="site-form" action="/accounts/signup/" method="post">
+    <form class="site-form" action="/accounts/signup2/" method="post">
         {% csrf_token %}
         {{ form }}
         <input type="submit" value="Signup">
