@@ -12,7 +12,43 @@
     <title>Admin Page</title>
 
 </head>
+
 <body>
-<h1>Administrator</h1>
+<div class="registerdoc" style="text-align:center; margin-top: 100px";>
+       <h1>ADMIN</h1>
+        <button class="button">
+            Register A Doctor
+        </button>
+    </div >
+    <div style="text-align: center">
+        <button class="button" >
+            Register a Hospital
+
+        </button>
+    </div>
+    <div style="text-align: center">
+        <button class="button" >
+             Search For Doctors
+    </button>
+</div>
+    <div style="text-align: center">
+        <button class="button">
+            Search For Patients
+        </button>
+    </div>
+
+    <div style="text-align: center">
+      <a href="{% url 'appointments:list'%}"> <button class="button">
+            Search For Appointments
+        </button>
+        </a>
+    </div>
+
+    <div style="text-align: center">
+        <button class="button">
+            Block a User
+        </button>
+    </div>
+    </body>
 </body>
 </html>
