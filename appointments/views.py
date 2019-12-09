@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Appointment
+from .models import Appointment, Patient
 from django.http import HttpResponse
 
 # def appointment_list(request):
@@ -11,6 +11,8 @@ from django.http import HttpResponse
 #     return render(request, 'appointments/appointment_detail.html', {'appointment':appointment})
 
 from django.views.generic import DetailView, ListView
+
+
 class list_of_appointments(ListView):
 
     # queryset = Appointment.objects.all()
@@ -18,3 +20,8 @@ class list_of_appointments(ListView):
     template_name = 'appointments/appointment_list.html'
 
 
+class list_of_patients(ListView):
+
+    #queryset = Patient.objects.all();
+    model = Patient
+    template_name = 'appointments/patient_list.html'
