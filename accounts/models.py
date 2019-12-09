@@ -38,4 +38,6 @@ class Patient(models.Model):
     age = models.CharField(max_length=3)
     gender = models.CharField(max_length=1)
 
+    def __str__(self):
+     return self.name, self.gsm, self.email
 
