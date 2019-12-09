@@ -30,6 +30,9 @@ class Doctor(models.Model):
     department = models.CharField(max_length=50)
     hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE)
 
+    def __str__(self):
+        return f'{self.id}{self.name}{self.gender}{self.gsm}{self.email}{self.address}'
+
 class Patient(models.Model):
     name = models.CharField(max_length=50, default='isim')
     gsm = models.CharField(max_length=11)
@@ -38,6 +41,5 @@ class Patient(models.Model):
     age = models.CharField(max_length=3)
     gender = models.CharField(max_length=1)
 
-    def __str__(self):
-     return self.name, self.gsm, self.email
+
 

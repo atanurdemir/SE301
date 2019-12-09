@@ -22,6 +22,10 @@ class list_of_appointments(ListView):
 
 class list_of_patients(ListView):
 
-    #queryset = Patient.objects.all();
     model = Patient
     template_name = 'appointments/patient_list.html'
+
+class list_of_patients2(ListView):
+
+    model = Patient
+    template_name = 'doctorPage.html'
