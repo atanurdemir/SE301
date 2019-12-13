@@ -26,6 +26,8 @@ Atanur:
 		
 		9. System Design Document
 		
+		10. Making appointment function implementation
+		
 Taha: 
 
 		1. User Authentications (Login, Register etc. [Related Files-> accounts/forms.py, accounts/views.py, SE301/urls.py])
