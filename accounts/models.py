@@ -29,6 +29,9 @@ class Hospitals(models.Model):
     phone = models.CharField(max_length=15)
     numBeds = models.CharField(max_length=5)
     numRooms = models.CharField(max_length=5)
+# HASTANE ADI FIELDI EKLENECEK. EKLENMEDIYSE LUTFEN GÖRDÜĞÜNÜZDE PROJEYİ BOZMADAN DATABASE I PATLATMADAN YAPINIZ. ONLINE DATABASE RISKLI!!!
+    def __str__(self):
+        return self.address
 
 class Doctor(models.Model):
     #ID , gsm, address, e-mail, title
@@ -41,7 +44,7 @@ class Doctor(models.Model):
     hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'{self.id}{self.name}{self.gender}{self.gsm}{self.email}{self.address}'
+        return f'{self.name}'
 
 class Patient(models.Model):
     name = models.CharField(max_length=50, default='isim')
@@ -51,5 +54,7 @@ class Patient(models.Model):
     age = models.CharField(max_length=3)
     gender = models.CharField(max_length=1)
 
+    def __str__(self):
+        return self.name
 
 
