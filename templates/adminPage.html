@@ -1,18 +1,133 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% extends 'base.html' %}
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+{% block title %}
+    <title>Admin MainPage</title>
+{% endblock %}
 
-    <title>Admin Page</title>
+{% block menuTitle %}
+    <h1>Admin Menu</h1>
+    <p>This is a admin page.</p>
+{% endblock %}
 
-</head>
-<body>
-<h1>Administrator</h1>
-</body>
-</html>
+{% block leftNavbar %}
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="{% url "home" %}">MainPage</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Account</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Help Center</a>
+        </li>
+    </ul>
+{% endblock %}
+
+{% block rightNavbar %}
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink"
+           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Member Transactions
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="">Logout</a>
+        </div>
+    </li>
+{% endblock %}
+
+{% block container %}
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card gradient-card">
+                <div class="card-image bg-custom-2"
+                     style="background-image: url(https://wallpaperaccess.com/full/1282799.jpg)">
+
+                    <a href="{% url "signup" %}">
+                        <div class="text-white d-flex h-100 mask blue-gradient-rgba">
+                            <div class="first-content align-self-center p-3">
+                                <h3 class="card-title">Register a Doctor</h3>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <div class="card gradient-card">
+                <div class="card-image"
+                     style="background-image: url(https://wallpaperaccess.com/full/1282799.jpg);">
+                    <a href="#!">
+                        <div class="text-white d-flex h-100 mask purple-gradient-rgba">
+                            <div class="first-content align-self-center p-3">
+                                <h3 class="card-title">Register a Hospital</h3>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <div class="card gradient-card">
+
+                <div class="card-image"
+                     style="background-image: url(https://wallpaperaccess.com/full/1282799.jpg);">
+
+                    <a href="#!">
+                        <div class="text-white d-flex h-100 mask peach-gradient-rgba">
+                            <div class="first-content align-self-center p-3">
+                                <h3 class="card-title">Search For Doctors</h3>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <div class="card gradient-card">
+
+                <div class="card-image"
+                     style="background-image: url(https://wallpaperaccess.com/full/1282799.jpg);">
+
+                    <a href={% url 'appointments:list2' %}>
+                        <div class="text-white d-flex h-100 mask aqua-gradient-rgba">
+                            <div class="first-content align-self-center p-3">
+                                <h3 class="card-title">Search For Patients</h3>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <div class="card gradient-card">
+                <div class="card-image"
+                     style="background-image: url(https://wallpaperaccess.com/full/1282799.jpg);">
+
+                    <a href="{% url 'appointments:list1' %}">
+                        <div class="text-white d-flex h-100 mask aqua-gradient-rgba">
+                            <div class="first-content align-self-center p-3">
+                                <h3 class="card-title">Search For Appointments</h3>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <div class="card gradient-card">
+                <div class="card-image"
+                     style="background-image: url(https://wallpaperaccess.com/full/1282799.jpg);">
+
+                    <a href="#!">
+                        <div class="text-white d-flex h-100 mask aqua-gradient-rgba">
+                            <div class="first-content align-self-center p-3">
+                                <h3 class="card-title">Block a User</h3>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

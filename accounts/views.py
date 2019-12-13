@@ -7,7 +7,9 @@ from django.http import request
 from django.shortcuts import redirect
 from django.contrib.auth.models import Group
 from django.urls import reverse
-from django.core.mail import send_mail
+from appointments.models import Patient
+from django.views.generic import ListView
+
 
 
 def login_view(request):
@@ -74,20 +76,11 @@ def logout_view(request):
     return redirect('/')
 
 
-def send_mail_view(request):
-    if request.method == 'POST':
-        to = request.POST['recipient_email_address']
-        send_mail('Changing Password Request', 'Email body', [to, ])
-    return render(request, 'accounts/forgetPassword.html')
+class list_of_patients(ListView):
+    model = Patient
+    template_name = 'doctorPage.html'
 
+def itemget(request):
+        data = Patient.objects.all()
+        return render(request, 'doctorPage.html', {'data': data})
 
-
-def forgotpassword_view(request):
-    next = request.GET.get('next')
-    form = UserForgotPasswordForm(request.POST or None)
-    if form.is_valid():
-        send_mail_view()
-    context = {
-        'form': form,
-    }
-    return render(request, "accounts/forgetPassword.html", context)
