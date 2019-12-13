@@ -45,4 +45,4 @@ def add_appointment(request):
     else:  # display empty form
         form = AppointmentForm()
 
-    return render(request, 'add_appointment.html', {'appointment_form': form})
+    return render(request, 'appointments/add_appointment.html', {'appointment_form': form})

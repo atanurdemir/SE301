@@ -10,7 +10,7 @@ class Appointment(models.Model):
     district = models.CharField(max_length=40)
     province = models.CharField(max_length=40)
     clinic = models.CharField(max_length=40)
-    hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE)
+    hospital = models.ForeignKey(Hospitals, on_delete=models.CASCADE)
 
 
     def __str__(self):
@@ -18,3 +18,4 @@ class Appointment(models.Model):
 
     def snippet(self):
         return self.patient[:15]
+    
