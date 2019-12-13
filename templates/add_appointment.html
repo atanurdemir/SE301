@@ -1,0 +1,5 @@
+<form action="{% url 'appointments:add_appointment' %}" method="post">
+    {% csrf_token %}
+    {{ car_form.as_p }}
+    <input type="submit" value="Save new appointment">
+</form>
