@@ -41,6 +41,14 @@ Taha:
 		5. Database Setup (Admin, Hospital, Patient, UserProfile, Appointment, ext. tables and their attiributes with connections)
 		6. Database Setup (Admin, Hospital, Patient, UserProfile, Appointment, ext. tables and their attiributes with connections)
 		7. System Design Document
+		
+Alp:
+    
+    1. Patient Page and It's Functions(Making appointment, view personal informationsi appointment history and upcoming appointments)
+    
+    2. Database Connections for Patient Page
+    
+    3. Sending e-mail for forgorpassword operation 
 
 # Project Environments
         
