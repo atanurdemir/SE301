@@ -6,6 +6,8 @@ from django.http import request
 from django.shortcuts import redirect
 from django.contrib.auth.models import Group
 from django.urls import reverse
+from appointments.models import Patient
+from django.views.generic import ListView
 
 
 def login_view(request):
@@ -70,3 +72,12 @@ def register_view2(request):
 def logout_view(request):
     logout(request)
     return redirect('/')
+
+
+class list_of_patients(ListView):
+    model = Patient
+    template_name = 'doctorPage.html'
+
+def itemget(request):
+        data = Patient.objects.all()
+        return render(request, 'doctorPage.html', {'data': data})
