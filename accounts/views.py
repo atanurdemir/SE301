@@ -1,9 +1,6 @@
-from MySQLdb._mysql import connection
 from django.conf import settings
 from django.shortcuts import render, redirect
 from django.contrib.auth import (authenticate, get_user_model, login, logout)
-
-from accounts import models
 from .forms import UserLoginForm, UserRegisterForm, UserForgotPasswordForm
 from django.contrib.auth.decorators import login_required
 from django.http import request
@@ -11,8 +8,7 @@ from django.shortcuts import redirect
 from django.contrib.auth.models import Group
 from django.urls import reverse
 from django.core.mail import send_mail
-from django.views.generic import DetailView, ListView
-from .models import Patient, Hospital
+
 
 def login_view(request):
     next = request.GET.get('next')
@@ -85,6 +81,7 @@ def send_mail_view(request):
     return render(request, 'accounts/forgetPassword.html')
 
 
+
 def forgotpassword_view(request):
     next = request.GET.get('next')
     form = UserForgotPasswordForm(request.POST or None)
@@ -94,16 +91,3 @@ def forgotpassword_view(request):
         'form': form,
     }
     return render(request, "accounts/forgetPassword.html", context)
-
-
-class list_of_patient(ListView):
-    model = Patient
-    template_name = 'patientPage.html'
-
-
-def hospital_list_view(request):
-    queryset= Hospital.objects.all()
-    context = {
-        "hospital_list": queryset
-    }
-    return render(request, "patientPage.html", context)

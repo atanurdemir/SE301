@@ -1,15 +1,15 @@
 from django.contrib import admin
 from django.urls import path
-from Pages.views import home_view, admin_view, doctor_view, patient_view, contact_view, forgotpassword_view, news_view
+from Pages.views import home_view, admin_view, doctor_view, patient_view, contact_view, forget_view, news_view
 from django.conf.urls import url, include
 from django.views.generic import TemplateView
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from accounts.views import login_view, register_view, register_view2, forgotpassword_view
+from accounts.views import login_view, register_view, register_view2
 
 urlpatterns = [
     path('', home_view, name='home'),
     url(r'^contact/$', contact_view, name="contact"),
-    url(r'^forgetPassword/$', forgotpassword_view, name="forgetPassword"),
+    url(r'^forgetPassword/$', forget_view, name="forgetPassword"),
     path('login/', login_view),
     url(r'^news/$', news_view, name="news"),
     url(r'^signup/$', register_view, name="signup"),

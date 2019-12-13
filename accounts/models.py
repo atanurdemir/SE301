@@ -1,8 +1,5 @@
-from django.db import connection
 from django.contrib.auth.models import AbstractUser, User, Group
 from django.db import models
-from django.shortcuts import render_to_response
-from django.template import RequestContext
 
 Roles = (
     ('admin', 'ADMIN'),
@@ -21,14 +18,6 @@ class Hospital(models.Model):
     phone = models.CharField(max_length=15)
     numBeds = models.CharField(max_length=5)
     numRooms = models.CharField(max_length=5)
-    district = models.CharField(max_length=15)
-    province = models.CharField(max_length=15)
-
-    def __str__(self):
-        return self.district, self.province
-
-    def snippet(self):
-        return self.hospital[:15]
 
 
 class Doctor(models.Model):
@@ -41,7 +30,6 @@ class Doctor(models.Model):
     department = models.CharField(max_length=50)
     hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE)
 
-
 class Patient(models.Model):
     name = models.CharField(max_length=50, default='isim')
     gsm = models.CharField(max_length=11)
@@ -49,11 +37,5 @@ class Patient(models.Model):
     email = models.EmailField()
     age = models.CharField(max_length=3)
     gender = models.CharField(max_length=1)
-
-    def __str__(self):
-        return self.name, self.gsm, self.address, self.email, self.age, self.gender
-
-    def snippet(self):
-        return self.patient[:15]
 
 

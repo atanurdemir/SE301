@@ -46,7 +46,7 @@ def contact_view(request, *args, **kwargs):
     return render(request, "contact.html", {})
 
 
-def forgotpassword_view(request, *args, **kwargs):
+def forget_view(request, *args, **kwargs):
     print(args, kwargs)
     print(request.user)
     return render(request, "accounts/forgetPassword.html", {})

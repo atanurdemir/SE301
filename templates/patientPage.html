@@ -8,6 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet"
@@ -25,6 +26,9 @@
             crossorigin="anonymous"></script>
     <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
@@ -103,10 +107,9 @@
             <div class="modal-body">
                 <form>
                     <div class="form-row">
-
                         <div class="form-group col-md-6">
                             <label for="firstName">First Name</label>
-                            <input type="text" class="form-control" id="firstName">
+                            <input type="text" class="form-control" id="firstName" placeholder="First Name">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="lastName">Last Name</label>
@@ -176,7 +179,6 @@
                     </thead>
                     <tbody>
                     <tr>
-
                         <th scope="row">1</th>
                         <td></td>
                         <td></td>
@@ -289,30 +291,25 @@
 
 <!-- Appointment Part -->
 
-
 <div class="container-fluid">
     <div class="row">
         <div class="mx-auto" style="width: 500px;">
             <form method="post">
-
                 <div class="form-group">
                     <label class="control-label" for="date">Date</label>
                     <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text"/>
                 </div>
                 <label class="control-label" for="date">Province</label>
-                {% for instance in hospital_list %}
-                    <select class="custom-select custom-select-lg mb-3">
-                        <option value="{{ instance.province }}">{{ instance.province }}</option>
-                    </select>
-                {% endfor %}
+                <select class="custom-select custom-select-lg mb-3">
+                    <option selected>Province</option>
+                </select>
                 <label class="control-label" for="date">District</label>
                 <select class="custom-select custom-select-lg mb-3">
-                        <option value="asd" selected>{{ instance }}</option>
-
+                    <option selected>District</option>
                 </select>
                 <label class="control-label" for="date">Clinic</label>
                 <select class="custom-select custom-select-lg mb-3">
-                    <option >Clinic</option>
+                    <option selected>Clinic</option>
                 </select>
                 <label class="control-label" for="date">Hospital</label>
                 <select class="custom-select custom-select-lg mb-3">
@@ -338,6 +335,7 @@
     </div>
 </div>
 </body>
+
 <script>
     $(document).ready(function () {
         var date_input = $('input[name="date"]');
