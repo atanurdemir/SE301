@@ -1,6 +1,7 @@
+from django.conf import settings
 from django.shortcuts import render, redirect
 from django.contrib.auth import (authenticate, get_user_model, login, logout)
-from .forms import UserLoginForm, UserRegisterForm
+from .forms import UserLoginForm, UserRegisterForm, UserForgotPasswordForm
 from django.contrib.auth.decorators import login_required
 from django.http import request
 from django.shortcuts import redirect
@@ -8,6 +9,7 @@ from django.contrib.auth.models import Group
 from django.urls import reverse
 from appointments.models import Patient
 from django.views.generic import ListView
+
 
 
 def login_view(request):
@@ -81,3 +83,4 @@ class list_of_patients(ListView):
 def itemget(request):
         data = Patient.objects.all()
         return render(request, 'doctorPage.html', {'data': data})
+

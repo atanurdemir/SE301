@@ -141,3 +141,10 @@ STATICFILES_DIRS = (
 )
 
 LOGIN_REDIRECT_URL = "login_view"
+
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'alpnce@gmail.com'
+EMAIL_HOST_PASSWORD = 'dveejsajadvaapxx'
+EMAIL_PORT = 587
