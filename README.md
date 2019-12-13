@@ -38,9 +38,10 @@ Taha:
 		
 		5. Database Connections for Admin Page (Search, Delete, Add etc. queries implementation)
 		
-		5. Database Setup (Admin, Hospital, Patient, UserProfile, Appointment, ext. tables and their attiributes with connections)
 		6. Database Setup (Admin, Hospital, Patient, UserProfile, Appointment, ext. tables and their attiributes with connections)
 		7. System Design Document
+		
+		8. Making appointment function implementation, database connections for Patient and Appointment.
 		
 Alp:
     
