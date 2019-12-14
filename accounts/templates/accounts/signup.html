@@ -5,8 +5,7 @@
 {% endblock %}
 
 {% block menuTitle %}
-    <h1>Register a Doctor</h1>
-    <p>This is a register page for doctor.</p>
+    <h1 class="display-2"><b>Register Page</b></h1>
 {% endblock %}
 
 {% block leftNavbar %}
@@ -23,12 +22,15 @@
     </ul>
 {% endblock %}
 
-{% block register %}
-    <h1>Signup</h1>
+{% block container %}
+    <h2 style="height:85px"></h2>
+    <form class="form-signin" method="POST">
+        <h1>Signup</h1>
 
-    <form class="site-form" action="/accounts/signup/" method="post">
-        {% csrf_token %}
-        {{ form }}
-        <input type="submit" value="Signup">
+        <form class="site-form" action="/accounts/signup/" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Signup">
+        </form>
     </form>
 {% endblock %}
