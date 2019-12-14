@@ -12,6 +12,23 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, default=None, null=True)
     role = models.CharField(max_length=50, choices=Roles, default='client')
 
+
+
+class Province(models.Model):
+    name = models.CharField(max_length=30)
+    def __str__(self):
+        return self.name
+
+
+
+class District(models.Model):
+    name = models.CharField(max_length=30)
+    province = models.ForeignKey(Province, on_delete=models.CASCADE)
+    def __str__(self):
+        return self.name
+
+
+
 ###### BU HOSPITAL KULLANILMIYOR BİR ARA SİLECEĞİM. ŞİMDİ SİLİNCE BOZULUYOR.
 class Hospital(models.Model):
     province = models.CharField(max_length=200)
