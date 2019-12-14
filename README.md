@@ -48,7 +48,7 @@ Taha:
 		
 Alp:
     
-    1. Patient Page and It's Functions(Making appointment, view personal informationsi appointment history and upcoming appointments)
+    1. Patient Page and It's Functions(View personal informationsi appointment history and upcoming appointments)
     
     2. Database Connections for Patient Page
     
