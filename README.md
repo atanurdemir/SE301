@@ -24,6 +24,10 @@ Atanur:
 		
 		8. Online Database Server Setup (via ClearDB on Heroku)
 		
+		9. System Design Document
+		
+		10. Making appointment function implementation
+		
 Taha: 
 
 		1. User Authentications (Login, Register etc. [Related Files-> accounts/forms.py, accounts/views.py, SE301/urls.py])
@@ -37,6 +41,18 @@ Taha:
 		5. Database Connections for Admin Page (Search, Delete, Add etc. queries implementation)
 		
 		6. Database Setup (Admin, Hospital, Patient, UserProfile, Appointment, ext. tables and their attiributes with connections)
+		
+		7. System Design Document
+		
+		8. Making appointment function implementation, database connections for Patient and Appointment.
+		
+Alp:
+    
+    1. Patient Page and It's Functions(View personal informationsi appointment history and upcoming appointments)
+    
+    2. Database Connections for Patient Page
+    
+    3. Sending e-mail for forgorpassword operation 
 
 # Project Environments
         

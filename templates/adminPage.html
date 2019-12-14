@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block menuTitle %}
-    <h1>Admin Menu</h1>
+    <h1 class="display-2"><b>Admin Menu</b></h1>
     <p>This is a admin page.</p>
 {% endblock %}
 
@@ -36,6 +36,7 @@
 {% endblock %}
 
 {% block container %}
+    <h2 style="height:85px"></h2>
     <div class="row">
         <div class="col-md-6 mb-4">
             <div class="card gradient-card">
@@ -73,7 +74,7 @@
                 <div class="card-image"
                      style="background-image: url(https://wallpaperaccess.com/full/1282799.jpg);">
 
-                    <a href="#!">
+                    <a href={% url 'appointments:list3' %}>
                         <div class="text-white d-flex h-100 mask peach-gradient-rgba">
                             <div class="first-content align-self-center p-3">
                                 <h3 class="card-title">Search For Doctors</h3>
