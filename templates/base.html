@@ -32,24 +32,9 @@
             overflow-x: hidden;
         }
 
-        .bg-custom-2 {
-            background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
-        }
-
         footer {
             background-color: #f2f2f2;
             padding: 25px;
-        }
-
-        .modal-open {
-            overflow-y: auto !important;
-            padding-right: 0 !important;
-        }
-
-        .modal-scrollbar-measure {
-
-            overflow: hidden;
-
         }
     </style>
     <script>
@@ -82,7 +67,7 @@
 <body>
 
 <div class="jumbotron">
-    <div class="container text-center">
+    <div class="container text-center" >
         {% block menuTitle %}
         {% endblock %}
     </div>
@@ -203,36 +188,13 @@
     </div>
 
 
-    <div class="container">
+    <div class="container" style="height:1050px;">
         {% block container %}
         {% endblock %}
     </div>
     <br>
 
-    <div class="container">
-        <form class="form-signin" method="POST">
-            {% block login %}
-            {% endblock %}
-        </form>
-    </div>
-
-    <div class="container">
-        <form class="form-signin" method="POST">
-            {% block register %}
-            {% endblock %}
-        </form>
-    </div>
-
-    <div class="container">
-        {% block container2 %}
-        {% endblock %}
-    </div>
-
 </div>
-<footer class="container-fluid text-center">
-    {% block containerFluid %}
-    {% endblock %}
-</footer>
 </div>
 
 </body>
