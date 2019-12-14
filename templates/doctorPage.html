@@ -79,8 +79,8 @@
 {% endblock %}
 
 {% block searchPatient %}
-    <table class="table table-bordered">
-
+    <table class="table table-bordered sortable table-hover">
+    <thead>
         <tr>
             <th>ID</th>
             <th>Name</th>
@@ -91,6 +91,7 @@
             <th>Address</th>
             <th>Edit</th>
         </tr>
+
 
 
         {% for patient in data %}
@@ -111,6 +112,8 @@
             </tr>
         {% endfor %}
 
+    {% endfor %}
+ </tbody>
 
     </table>
 {% endblock %}

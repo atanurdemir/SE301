@@ -49,3 +49,19 @@ def add_appointment(request):
         form = AppointmentForm()
 
     return render(request, 'appointments/add_appointment.html', {'appointment_form': form})
+
+
+
+from django.views.generic import ListView, CreateView,DeleteView,UpdateView
+from django.urls import reverse_lazy
+
+class AppointmentCreateView(CreateView):
+    model = Appointment
+    fields = ("Date", "province", "district", "hospital", "clinic", "doctor")
+    success_url = reverse_lazy('person_changelist')
+
+class AppointmentUpdateView(UpdateView):
+    model = Appointment
+    fields = ("Date", "province", "district", "hospital", "clinic", "doctor")
+    success_url = reverse_lazy('person_changelist')
+

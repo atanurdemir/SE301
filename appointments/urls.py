@@ -13,4 +13,6 @@ urlpatterns = [
     url(r'^patient_list/$', list_of_patients.as_view(), name='list2'),
     url(r'^doctors_list/$', list_of_doctors.as_view(), name='list3'),
     url(r'add-appointment/$', views.add_appointment, name='add_appointment'),
+    path('add/', views.AppointmentCreateView.as_view(), name='person_add'),
+    path('<int:pk>/', views.AppointmentUpdateView.as_view(), name='person_change'),
 ]
