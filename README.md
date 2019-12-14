@@ -12,7 +12,7 @@ Atanur:
 		
 		2. Redirect and Reverse Implementation (To redirect users to their own pages [Related Files-> accounts/views.py]) 
 		
-			3. Templates, Template Inheritance (All template .htmls / front-end implementation of project [Related Files->
+		3. Templates, Template Inheritance (All template .htmls / front-end implementation of project [Related Files-> all template folders and all .html files]
 		
 		4. Controller Logic (Related Files-> all urls.py and views.py implementations to link all pages together)
 		
@@ -52,7 +52,11 @@ Taha:
 		
 Alp:
    
-    1. Sending e-mail for forgorpassword operation 
+    1. Patient Page and It's Functions(View personal informationsi appointment history and upcoming appointments)
+    
+    2. Database Connections for Patient Page
+    
+    3. Sending e-mail for forgorpassword operation 
 
 # Project Environments
         
