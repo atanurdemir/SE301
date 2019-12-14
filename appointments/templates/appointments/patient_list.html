@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    <title>Appointments</title>
+    <title>Patients</title>
 {% endblock %}
 
 {% block menuTitle %}
@@ -25,6 +25,7 @@
 {% block container %}
     <h2 style="height:70px"></h2>
     <table class="table table-hover">
+        <input class="form-control" id="myInput" type="text" placeholder="Search patient...">
         <thead>
         <tr>
             <th scope="col">Name</th>
@@ -35,7 +36,7 @@
             <th scope="col">Gender</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody id="myTable">
         {% for patient in object_list %}
 
 
