@@ -54,6 +54,8 @@ def add_appointment(request):
 
 from django.views.generic import ListView, CreateView,DeleteView,UpdateView
 from django.urls import reverse_lazy
+class AppointmentListView(ListView):
+    model = Appointment
 
 class AppointmentCreateView(CreateView):
     model = Appointment
@@ -64,4 +66,9 @@ class AppointmentUpdateView(UpdateView):
     model = Appointment
     fields = ("Date", "province", "district", "hospital", "clinic", "doctor")
     success_url = reverse_lazy('person_changelist')
+from accounts.models import District
 
+def load_districts(request):
+    district_id = request.GET.get('district')
+    districts = District.objects.filter(district_id=district_id).order_by('name')
+    return render(request, 'district_dropdown_list_options.html', {'districts': districts})

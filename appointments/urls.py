@@ -14,5 +14,7 @@ urlpatterns = [
     url(r'^doctors_list/$', list_of_doctors.as_view(), name='list3'),
     url(r'add-appointment/$', views.add_appointment, name='add_appointment'),
     path('add/', views.AppointmentCreateView.as_view(), name='person_add'),
+    path('', views.AppointmentListView.as_view(), name='person_changelist'),
     path('<int:pk>/', views.AppointmentUpdateView.as_view(), name='person_change'),
+    path('ajax/load-districts/', views.load_districts, name='ajax_load_districts'),
 ]
