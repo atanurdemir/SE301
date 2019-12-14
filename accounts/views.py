@@ -8,7 +8,7 @@ from django.contrib.auth.models import Group
 from django.urls import reverse
 from appointments.models import Patient
 from django.views.generic import ListView
-
+from appointments.models import Appointment
 
 def login_view(request):
     next = request.GET.get('next')
@@ -77,6 +77,13 @@ def logout_view(request):
 class list_of_patients(ListView):
     model = Patient
     template_name = 'doctorPage.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['PatientModel'] = Patient.objects.all()
+        context['my_second_model'] = Patient.objects.all()
+        context['my_third_model'] = Patient.objects.all()
+        return context
 
 def itemget(request):
         data = Patient.objects.all()

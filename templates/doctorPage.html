@@ -79,8 +79,8 @@
 {% endblock %}
 
 {% block searchPatient %}
-    <table class="table table-bordered">
-
+    <table class="table table-bordered sortable table-hover">
+    <thead>
         <tr>
             <th>ID</th>
             <th>Name</th>
@@ -91,9 +91,9 @@
             <th>Address</th>
             <th>Edit</th>
         </tr>
-
-
- {% for patient in data %}
+</thead>
+<tbody>
+ {% for patient in PatientModel %}
          <tr>
 
             <td>ID</td>
@@ -109,8 +109,9 @@
                 </button>
             </a></td>
          </tr>
-    {% endfor %}
 
+    {% endfor %}
+ </tbody>
 
     </table>
 {% endblock %}
@@ -169,7 +170,7 @@
                 <div class="card-image"
                      style="background-image: url(https://wallpaperaccess.com/full/1282799.jpg);">
 
-                    <a href="!#">
+                    <a href="#!">
                         <div class="text-white d-flex h-100 mask peach-gradient-rgba" data-toggle="modal"
                              data-target="#searchPatient">
                             <div class="first-content align-self-center p-3">
