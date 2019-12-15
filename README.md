@@ -52,11 +52,7 @@ Taha:
 		
 Alp:
    
-    1. Patient Page and It's Functions(View personal informationsi appointment history and upcoming appointments)
-    
-    2. Database Connections for Patient Page
-    
-    3. Sending e-mail for forgorpassword operation 
+   
 
 # Project Environments
         
