@@ -49,8 +49,7 @@ Taha:
 		8. PatientPage and It's Functions (Make Appointment Implementation, etc.)
 		
 		9. Database Connections for Patient Page
-		
-Alp:
+
    
    
 
