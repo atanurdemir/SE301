@@ -1,6 +1,6 @@
 <h2>Appointment Form</h2>
 
-  <form method="post" id="appointmentForm" data-cities-url="{% url 'appointments:ajax_load_cities' %}" novalidate>
+  <form method="post" id="appointmentForm" data-cities-url="{% url 'appointments:ajax_load_districts' %}" novalidate>
     {% csrf_token %}
     <table>
       {{ form.as_p }}
