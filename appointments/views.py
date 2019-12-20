@@ -19,10 +19,17 @@ class list_of_appointments(ListView):
     model = Appointment
     template_name = 'appointments/appointment_list.html'
 
+class list_of_viewAppointments(ListView):
+        model = Appointment
+        template_name = 'appointments/view_appointments.html'
+
+class list_of_searchPatients(ListView):
+        model = Patient
+        template_name = 'appointments/search_patients.html'
+
 class list_of_doctors(ListView):
         model = Doctor
         template_name = 'appointments/doctors_list.html'
-
 
 ## PATIENT LISTING AT ADMIN'S SCREEN
 class list_of_patients(ListView):
