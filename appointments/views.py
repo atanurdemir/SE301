@@ -20,7 +20,7 @@ class list_of_appointments(ListView):
     template_name = 'appointments/appointment_list.html'
 
 class list_of_viewAppointments(ListView):
-        model = Appointment
+        model = Appointments
         template_name = 'appointments/view_appointments.html'
 
 class list_of_searchPatients(ListView):
