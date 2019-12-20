@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Appointment, Patient, Doctor
+from .models import Appointments, Patient, Doctor
 from django.http import HttpResponse
 from .forms import AppointmentForm
 
@@ -16,7 +16,7 @@ from django.views.generic import DetailView, ListView
 
 class list_of_appointments(ListView):
     # queryset = Appointment.objects.all()
-    model = Appointment
+    model = Appointments
     template_name = 'appointments/appointment_list.html'
 
 class list_of_viewAppointments(ListView):
@@ -50,8 +50,9 @@ def add_appointment(request):
     if request.method == 'POST':  # data sent by user
         form = AppointmentForm(request.POST)
         if form.is_valid():
-            form.save()  # this will save Car info to database
-            return HttpResponse('New appointment added to database')
+           appointment = form.save(commit=False)
+           appointment.patient = request.user
+           return HttpResponse('New appointment added to database')
     else:  # display empty form
         form = AppointmentForm()
 
@@ -61,14 +62,28 @@ def add_appointment(request):
 
 from django.views.generic import ListView, CreateView,DeleteView,UpdateView
 from django.urls import reverse_lazy
+class AppointmentListView(ListView):
+    model = Appointments
+    context_object_name = 'appointments'
+
 
 class AppointmentCreateView(CreateView):
-    model = Appointment
+    model = Appointments
     fields = ("Date", "province", "district", "hospital", "clinic", "doctor")
     success_url = reverse_lazy('person_changelist')
 
+
+
 class AppointmentUpdateView(UpdateView):
-    model = Appointment
+    model = Appointments
     fields = ("Date", "province", "district", "hospital", "clinic", "doctor")
     success_url = reverse_lazy('person_changelist')
+
+
+
+from accounts.models import District
+def load_districts(request):
+    province_id = request.GET.get('province')
+    districts = District.objects.filter(province_id = province_id).order_by('name')
+    return render(request, 'appointments/district_dropdown_list_options.html', {'districts': districts})
 
