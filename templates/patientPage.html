@@ -1,354 +1,108 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% extends 'base.html' %}
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-            crossorigin="anonymous"></script>
-    <script type="text/javascript"
-            src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-            crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script type="text/javascript"
-            src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-    <title>Appointment Page</title>
+{% block title %}
+    <title>Patient MainPage</title>
+{% endblock %}
 
-    <style>
-        /* Remove the navbar's default rounded borders and increase the bottom margin */
-        .navbar {
-            margin-bottom: 50px;
-            border-radius: 0;
-        }
+{% block menuTitle %}
+    <h1 class="display-2"><b>Patient Menu</b></h1>
+    <p>This is a patient homepage.</p>
+{% endblock %}
 
-        /* Remove the jumbotron's default bottom margin */
-        .jumbotron {
-            background-image: url("http://i.hizliresim.com/86OB8a.jpg")
-        }
+{% block leftNavbar %}
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="{% url "home" %}">MainPage</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Account</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Help Center</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+        </li>
+    </ul>
+{% endblock %}
 
-        /* Add a gray background color and some padding to the footer */
-        footer {
-            background-color: #f2f2f2;
-            padding: 25px;
-        }
-    </style>
-
-    <div class="jumbotron">
-
-        <div class="container text-center">
-            <h1>Appointment System</h1>
-            <p>This is a national appointment system.</p>
+{% block rightNavbar %}
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink"
+           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Member Transactions
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="">Logout</a>
         </div>
-    </div>
-</head>
-<body>
-<!-- Navigation Bar -->
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Logo</a>
-        </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav">
-                <li><a href="#" data-toggle="modal" data-target="#infoModal">Personal Informations</a></li>
-                <li><a href="#" data-toggle="modal" data-target="#futureAppModal">Future Appointments</a></li>
-                <li><a href="#" data-toggle="modal" data-target="#appHistoryModal">Appointment History</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"><span
-                            class="glyphicon glyphicon-user"></span> Member Transaction</a>
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="login">Login</a>
-                        <a class="dropdown-item" href="register">Register</a>
-                        <a class="dropdown-item" href="forgetPassword">Forget Password</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+    </li>
+{% endblock %}
 
-<!--Personal Informations Modal -->
-<div id="infoModal" class="modal" tabindex="-1" role="dialog" aria-labelledby="infoModal" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel">Personal Informations</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="align-self: end">
-                    &times;
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="firstName">First Name</label>
-                            <input type="text" class="form-control" id="firstName" placeholder="First Name">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="lastName">Last Name</label>
-                            <input type="text" class="form-control" id="lastName" placeholder="Last Name">
-                        </div>
-                        <div class="form-group col-md-12">
-                            <label for="inputAddress">Address</label>
-                            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="id">ID Number</label>
-                            <input type="text" class="form-control" id="id" placeholder="ID Number">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="age">Age</label>
-                            <input type="text" class="form-control" id="age" placeholder="Age">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="gender">Gender</label>
-                            <input type="text" class="form-control" id="gender" placeholder="Gender">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="email">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="Email">
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="number">Phone Number</label>
-                            <input type="tel" class="form-control" id="number" placeholder="Phone Number">
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-link" style="align-self: flex-start">Change Password</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-success">Save Changes</button>
-            </div>
-        </div>
-    </div>
-</div>
 
-<!--Future Appointments Modal -->
-<div id="futureAppModal" class="modal" tabindex="-1" role="dialog" aria-labelledby="futureAppModal"
-     aria-hidden="true" style="width: 90%;">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel">Future Appointments</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="align-self: end">
-                    &times;
-                </button>
-            </div>
-            <div class="modal-body">
-                <table class="table table-bordered">
-                    <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First Name</th>
-                        <th scope="col">Last Name</th>
-                        <th scope="col">Hospital Name</th>
-                        <th scope="col">Clinic</th>
-                        <th scope="col">Location</th>
-                        <th scope="col">Doctor Name</th>
-                        <th scope="col">Date</th>
-                        <th scope="col">Delete</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!--Appointment History Modal -->
-<div id="appHistoryModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="appHistoryModal"
-     aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel">Future Appointments</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="align-self: end">
-                    &times;
-                </button>
-            </div>
-            <div class="modal-body">
-                <table class="table table-bordered">
-                    <thead>
-                    <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First Name</th>
-                        <th scope="col">Last Name</th>
-                        <th scope="col">Hospital Name</th>
-                        <th scope="col">Clinic</th>
-                        <th scope="col">Location</th>
-                        <th scope="col">Doctor Name</th>
-                        <th scope="col">Date</th>
-                        <th scope="col">Delete</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
-</div>
-
-<!-- Appointment Part -->
-
-<div class="container-fluid">
+{% block container %}
+    <h2 style="height:85px"></h2>
     <div class="row">
-        <div class="mx-auto" style="width: 500px;">
-            <form method="post">
-                <div class="form-group">
-                    <label class="control-label" for="date">Date</label>
-                    <input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text"/>
+        <div class="col-md-6 mb-4">
+            <div class="card gradient-card">
+                <div class="card-image"
+                     style="background-image: url(https://wallpaperaccess.com/full/1282799.jpg);">
+
+                    <a href="#!">
+                        <div class="text-white d-flex h-100 mask aqua-gradient-rgba">
+                            <div class="first-content align-self-center p-3">
+                                <h3 class="card-title">Make an Appointment</h3>
+                            </div>
+                        </div>
+                    </a>
                 </div>
-                <label class="control-label" for="date">Province</label>
-                <select class="custom-select custom-select-lg mb-3">
-                    <option selected>Province</option>
-                </select>
-                <label class="control-label" for="date">District</label>
-                <select class="custom-select custom-select-lg mb-3">
-                    <option selected>District</option>
-                </select>
-                <label class="control-label" for="date">Clinic</label>
-                <select class="custom-select custom-select-lg mb-3">
-                    <option selected>Clinic</option>
-                </select>
-                <label class="control-label" for="date">Hospital</label>
-                <select class="custom-select custom-select-lg mb-3">
-                    <option selected>Hospital</option>
-                </select>
-                <label class="control-label" for="date">Neighborhood Polyclinic</label>
-                <select class="custom-select custom-select-lg mb-3">
-                    <option selected>Neighborhood Polyclinc</option>
-                </select>
-                <label class="control-label" for="date">Location</label>
-                <select class="custom-select custom-select-lg mb-3">
-                    <option selected>Examintaion Location</option>
-                </select>
-                <label class="control-label" for="date">Doctor</label>
-                <select class="custom-select custom-select-lg mb-3">
-                    <option selected>Doctor</option>
-                </select>
-                <a class="btn btn-lg btn-primary btn-block" href="#">Reset</a>
-                <a class="btn btn-lg btn-primary btn-block" href="#">Search</a>
-                <button class="btn"></button>
-            </form>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <div class="card gradient-card">
+                <div class="card-image"
+                     style="background-image: url(https://wallpaperaccess.com/full/1282799.jpg);">
+                    <a href="#!">
+                        <div class="text-white d-flex h-100 mask purple-gradient-rgba" data-toggle="modal"
+                             data-target="#reportPatient">
+                            <div class="first-content align-self-center p-3">
+                                <h3 class="card-title">Future Appointments</h3>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <div class="card gradient-card">
+                <div class="card-image"
+                     style="background-image: url(https://wallpaperaccess.com/full/1282799.jpg);">
+
+                    <a href="#!">
+                        <div class="text-white d-flex h-100 mask aqua-gradient-rgba">
+                            <div class="first-content align-self-center p-3">
+                                <h3 class="card-title">Appointment History</h3>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <div class="card gradient-card">
+
+                <div class="card-image"
+                     style="background-image: url(https://wallpaperaccess.com/full/1282799.jpg);">
+
+                    <a href="#!">
+                        <div class="text-white d-flex h-100 mask aqua-gradient-rgba">
+                            <div class="first-content align-self-center p-3">
+                                <h3 class="card-title">Cancel a Appointment</h3>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
-</div>
-</body>
-
-<script>
-    $(document).ready(function () {
-        var date_input = $('input[name="date"]');
-        var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
-        var options = {
-            format: 'mm/dd/yyyy',
-            container: container,
-            todayHighlight: true,
-            autoclose: true,
-        };
-        date_input.datepicker(options);
-    })
-</script>
-
-
-</html>
+{% endblock %}
