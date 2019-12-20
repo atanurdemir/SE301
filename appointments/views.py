@@ -20,7 +20,7 @@ class list_of_appointments(ListView):
     template_name = 'appointments/appointment_list.html'
 
 class list_of_viewAppointments(ListView):
-        model = Appointment
+        model = Appointments
         template_name = 'appointments/view_appointments.html'
 
 class list_of_searchPatients(ListView):
@@ -70,14 +70,14 @@ class AppointmentListView(ListView):
 class AppointmentCreateView(CreateView):
     model = Appointments
     fields = ("Date", "province", "district", "hospital", "clinic", "doctor")
-    success_url = reverse_lazy('person_changelist')
+    success_url = reverse_lazy('appointments_changelist')
 
 
 
 class AppointmentUpdateView(UpdateView):
     model = Appointments
     fields = ("Date", "province", "district", "hospital", "clinic", "doctor")
-    success_url = reverse_lazy('person_changelist')
+    success_url = reverse_lazy('appointments_changelist')
 
 
 
