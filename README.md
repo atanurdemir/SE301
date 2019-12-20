@@ -12,11 +12,11 @@ Atanur:
 		
 		2. Redirect and Reverse Implementation (To redirect users to their own pages [Related Files-> accounts/views.py]) 
 		
-		3. Templates, Template Inheritance (All template htmls / front-end implementation of project [Related Files-> base.html, home.html, and the other .html files])
+		3. Templates, Template Inheritance (All template .htmls / front-end implementation of project [Related Files-> all template folders and all .html files]
 		
 		4. Controller Logic (Related Files-> all urls.py and views.py implementations to link all pages together)
 		
-		5. DoctorPage and It's Functions [Pull/Push Data from Database]
+		5. DoctorPage and It's Functions (View Appointments, Search Patients, Report Patients, Give Prescription)
 		
 		6. Database Connections for DoctorPage
 		
@@ -26,7 +26,9 @@ Atanur:
 		
 		9. System Design Document
 		
-		10. Making appointment function implementation
+		10. PatientPage and It's Functions (Make Appointment Implementation, etc.)
+		
+		11. Database Connections for Patient Page
 		
 Taha: 
 
@@ -40,19 +42,16 @@ Taha:
 		
 		5. Database Connections for Admin Page (Search, Delete, Add etc. queries implementation)
 		
-		6. Database Setup (Admin, Hospital, Patient, UserProfile, Appointment, ext. tables and their attiributes with connections)
+		6. Database Setup (Admin, Hospital, Patient, UserProfile, Appointment, ext. tables and their attributes with connections)
 		
 		7. System Design Document
 		
-		8. Making appointment function implementation, database connections for Patient and Appointment.
+		8. PatientPage and It's Functions (Make Appointment Implementation, etc.)
 		
-Alp:
-    
-    1. Patient Page and It's Functions(View personal informationsi appointment history and upcoming appointments)
-    
-    2. Database Connections for Patient Page
-    
-    3. Sending e-mail for forgorpassword operation 
+		9. Database Connections for Patient Page
+
+   
+   
 
 # Project Environments
         
