@@ -1,28 +1,31 @@
 <h2>Appointment Form</h2>
 
-  <form method="post" id="personForm" data-districts-url="{% url 'appointments:ajax_load_districts' %}" novalidate>
+  <form method="post" id="appointmentForm" data-cities-url="{% url 'appointments:ajax_load_cities' %}" novalidate>
     {% csrf_token %}
     <table>
-      {{ form.as_table }}
+      {{ form.as_p }}
     </table>
     <button type="submit">Save</button>
+
+    <a href="{% url 'appointments:person_changelist' %}">Nevermind</a>
   </form>
 
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script>
-    $("#district_id").change(function () {
-      var url = $("#appointmentForm").attr("data-districts-url");  // get the url of the `load_cities` view
-      var province_id = $(this).val();  // get the selected country ID from the HTML input
+    $("#id_province").change(function () {
+      var url = $("#appointmentForm").attr("data-cities-url");  // get the url of the `load_cities` view
+      var provinceId = $(this).val();  // get the selected country ID from the HTML input
 
       $.ajax({                       // initialize an AJAX request
         url: url,                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
         data: {
-          'province': province_id       // add the country id to the GET parameters
+          'province': provinceId       // add the country id to the GET parameters
         },
         success: function (data) {   // `data` is the return of the `load_cities` view function
-          $("#district_id").html(data);  // replace the contents of the city input with the data that came from the server
+          $("#id_district").html(data);  // replace the contents of the city input with the data that came from the server
         }
       });
 
     });
   </script>
+
