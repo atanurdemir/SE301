@@ -29,7 +29,9 @@
 
         <form class="site-form" action="/accounts/signup/" method="post">
             {% csrf_token %}
-            {{ form }}
+            <table border="1">
+                {{ form }}
+            </table>
             <input type="submit" value="Signup">
         </form>
     </form>

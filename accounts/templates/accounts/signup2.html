@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block menuTitle %}
-    <h1 class="display-1"><b>Register a Patient</b></h1>
+    <h1 class="display-2"><b>Register Page</b></h1>
 {% endblock %}
 
 {% block leftNavbar %}
@@ -29,7 +29,9 @@
 
         <form class="site-form" action="/accounts/signup2/" method="post">
             {% csrf_token %}
-            {{ form }}
+            <table border="1">
+                {{ form }}
+            </table>
             <input type="submit" value="Signup">
         </form>
     </form>
