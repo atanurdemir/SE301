@@ -6,7 +6,7 @@ from accounts.models import *
 #RANDEVU MODELİ.
 #CLINICLER HASTANELERE BAĞLANACAK. SON KALAN İNCE İŞİ BU. 14.12.19
 # class Appointment(models.Model):
-#     date = models.DateTimeField(auto_now=True)
+#     Date = models.DateField()
 #     patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
 #     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
 #     district = models.ForeignKey(District, on_delete=models.CASCADE)
@@ -20,8 +20,9 @@ from accounts.models import *
 #
 #     def snippet(self):
 #         return self.patient[:15]
+
 class Appointments(models.Model):
-    date = models.DateTimeField(auto_now=True)
+    Date = models.DateField()
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
     district = models.ForeignKey(District, on_delete=models.CASCADE)

@@ -1,19 +1,19 @@
 <h2>Appointment Form</h2>
 
-  <form method="post" id="appointmentForm" data-cities-url="{% url 'appointments:ajax_load_districts' %}" novalidate>
+  <form method="post" id="appointmentForm" data-districts-url="{% url 'appointments:ajax_load_districts' %}" novalidate>
     {% csrf_token %}
     <table>
       {{ form.as_p }}
     </table>
     <button type="submit">Save</button>
 
-    <a href="{% url 'appointments:person_changelist' %}">Nevermind</a>
+    <a href="{% url 'appointments:appointments_changelist' %}">Nevermind</a>
   </form>
 
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script>
     $("#id_province").change(function () {
-      var url = $("#appointmentForm").attr("data-cities-url");  // get the url of the `load_cities` view
+      var url = $("#appointmentForm").attr("data-districts-url");  // get the url of the `load_cities` view
       var provinceId = $(this).val();  // get the selected country ID from the HTML input
 
       $.ajax({                       // initialize an AJAX request

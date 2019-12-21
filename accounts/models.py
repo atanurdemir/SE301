@@ -54,12 +54,14 @@ class Hospitals(models.Model):
     phone = models.CharField(max_length=15)
     numBeds = models.CharField(max_length=5)
     numRooms = models.CharField(max_length=5)
-
+    def __str__(self):
+        return self.name
 
 class Departments(models.Model):
     name = models.CharField(max_length=80)
     hospital = models.ForeignKey(Hospitals, on_delete=models.CASCADE)
-
+    def __str__(self):
+        return self.name
 
 class Doctor(models.Model):
     #ID , gsm, address, e-mail, title
@@ -68,7 +70,7 @@ class Doctor(models.Model):
     address = models.CharField(max_length=200)
     email = models.EmailField()
     title = models.CharField(max_length=20)
-    department = models.CharField(max_length=50)
+    department = models.ForeignKey(Departments, on_delete=models.CASCADE)
     hospital = models.ForeignKey(Hospitals, on_delete=models.CASCADE)
 
     def __str__(self):

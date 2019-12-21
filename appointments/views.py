@@ -50,8 +50,7 @@ def add_appointment(request):
     if request.method == 'POST':  # data sent by user
         form = AppointmentForm(request.POST)
         if form.is_valid():
-           appointment = form.save(commit=False)
-           appointment.patient = request.user
+           form.save(commit=False)
            return HttpResponse('New appointment added to database')
     else:  # display empty form
         form = AppointmentForm()

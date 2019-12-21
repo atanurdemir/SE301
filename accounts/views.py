@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.shortcuts import render, redirect
 from django.contrib.auth import (authenticate, get_user_model, login, logout)
-from .forms import UserLoginForm, UserRegisterForm, UserForgotPasswordForm
+from .forms import UserLoginForm, UserRegisterForm, UserForgotPasswordForm, HospitalsForm, DoctorForm
 from django.contrib.auth.decorators import login_required
 from django.http import request
 from django.shortcuts import redirect
@@ -91,3 +91,17 @@ def itemget(request):
         data = Patient.objects.all()
         return render(request, 'doctorPage.html', {'data': data})
 
+def HospitalCreateView(request):
+    form = HospitalsForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+    context = {'form' : form}
+    return render(request, "accounts/register_hospital.html",context)
+
+
+def DoctorCreateView(request):
+    form = DoctorForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+    context = {'form' : form}
+    return render(request, "accounts/register_doctor.html",context)

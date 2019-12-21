@@ -62,3 +62,29 @@ class UserForgotPasswordForm(forms.Form):
         if not email_qs.exists():
             raise forms.ValidationError("This email is not registered")
         return super(UserForgotPasswordForm, self).clean(*args, **kwargs)
+
+from accounts.models import Hospitals, Doctor
+class HospitalsForm(forms.ModelForm):
+    class Meta:
+        model = Hospitals
+        fields=[
+            'name',
+            'province',
+            'district',
+            'phone',
+            'numBeds',
+            'numRooms'
+            ]
+
+class DoctorForm(forms.ModelForm):
+    class Meta:
+        model = Doctor
+        fields = [
+            'name',
+            'title',
+            'email',
+            'gsm',
+            'address',
+            'department',
+            'hospital'
+        ]
