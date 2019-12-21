@@ -50,8 +50,7 @@ def add_appointment(request):
     if request.method == 'POST':  # data sent by user
         form = AppointmentForm(request.POST)
         if form.is_valid():
-           appointment = form.save(commit=False)
-           appointment.patient = request.user
+           form.save(commit=False)
            return HttpResponse('New appointment added to database')
     else:  # display empty form
         form = AppointmentForm()
@@ -70,14 +69,14 @@ class AppointmentListView(ListView):
 class AppointmentCreateView(CreateView):
     model = Appointments
     fields = ("Date", "province", "district", "hospital", "clinic", "doctor")
-    success_url = reverse_lazy('person_changelist')
+    success_url = reverse_lazy('appointments_changelist')
 
 
 
 class AppointmentUpdateView(UpdateView):
     model = Appointments
     fields = ("Date", "province", "district", "hospital", "clinic", "doctor")
-    success_url = reverse_lazy('person_changelist')
+    success_url = reverse_lazy('appointments_changelist')
 
 
 
