@@ -1,7 +1,9 @@
 from django.shortcuts import render
-from .models import Appointment, Patient, Doctor
+from .models import Appointment, Patient, Doctor, Comments
 from django.http import HttpResponse
 from .forms import AppointmentForm
+from django.views.generic import ListView, CreateView, DeleteView, UpdateView
+from django.urls import reverse_lazy
 
 # def appointment_list(request):
 #  appointments = Appointment.objects.all().order_by('PatientName');
@@ -19,17 +21,21 @@ class list_of_appointments(ListView):
     model = Appointment
     template_name = 'appointments/appointment_list.html'
 
+
 class list_of_viewAppointments(ListView):
-        model = Appointment
-        template_name = 'appointments/view_appointments.html'
+    model = Appointment
+    template_name = 'appointments/view_appointments.html'
+
 
 class list_of_searchPatients(ListView):
-        model = Patient
-        template_name = 'appointments/search_patients.html'
+    model = Patient
+    template_name = 'appointments/search_patients.html'
+
 
 class list_of_doctors(ListView):
-        model = Doctor
-        template_name = 'appointments/doctors_list.html'
+    model = Doctor
+    template_name = 'appointments/doctors_list.html'
+
 
 ## PATIENT LISTING AT ADMIN'S SCREEN
 class list_of_patients(ListView):
@@ -43,6 +49,10 @@ class list_of_patients2(ListView):
     model = Patient
     template_name = 'doctorPage.html'
 
+class list_of_messages(ListView):
+        model = Comments
+        template_name = 'appointments/check_messages.html'
+
 
 ##APPOINTMENT SAVING TO DATABASE
 
@@ -50,17 +60,14 @@ def add_appointment(request):
     if request.method == 'POST':  # data sent by user
         form = AppointmentForm(request.POST)
         if form.is_valid():
-           form.save(commit=False)
-           return HttpResponse('New appointment added to database')
+            form.save(commit=False)
+            return HttpResponse('New appointment added to database')
     else:  # display empty form
         form = AppointmentForm()
 
     return render(request, 'appointments/add_appointment.html', {'appointment_form': form})
 
 
-
-from django.views.generic import ListView, CreateView,DeleteView,UpdateView
-from django.urls import reverse_lazy
 class AppointmentListView(ListView):
     model = Appointment
     context_object_name = 'appointments'
@@ -70,6 +77,7 @@ class AppointmentCreateView(CreateView):
     model = Appointment
     fields = ("Date", "province", "district", "hospital", "clinic", "doctor")
     success_url = reverse_lazy('appointments_changelist')
+
     def user(request):
         Appointment.patient = request.user()
 
@@ -80,10 +88,10 @@ class AppointmentUpdateView(UpdateView):
     success_url = reverse_lazy('appointments_changelist')
 
 
-
 from accounts.models import District
+
+
 def load_districts(request):
     province_id = request.GET.get('province')
-    districts = District.objects.filter(province_id = province_id).order_by('name')
+    districts = District.objects.filter(province_id=province_id).order_by('name')
     return render(request, 'appointments/district_dropdown_list_options.html', {'districts': districts})
-

@@ -1,7 +1,8 @@
 from django.conf import settings
 from django.shortcuts import render, redirect
 from django.contrib.auth import (authenticate, get_user_model, login, logout)
-from .forms import UserLoginForm, UserRegisterForm, UserForgotPasswordForm, HospitalsForm, DoctorForm
+from .forms import UserLoginForm, UserRegisterForm, UserForgotPasswordForm, HospitalsForm, DoctorForm, CommentForm, \
+    SendPrescriptionForm
 from django.contrib.auth.decorators import login_required
 from django.http import request
 from django.shortcuts import redirect
@@ -11,6 +12,7 @@ from appointments.models import Patient
 from .models import Doctor
 from django.views.generic import ListView, UpdateView, DeleteView, CreateView, DetailView
 from appointments.models import Appointment
+from django.contrib import messages
 
 
 def login_view(request):
@@ -88,9 +90,11 @@ class list_of_patients(ListView):
         context['my_third_model'] = Patient.objects.all()
         return context
 
+
 def itemget(request):
-        data = Patient.objects.all()
-        return render(request, 'doctorPage.html', {'data': data})
+    data = Patient.objects.all()
+    return render(request, 'doctorPage.html', {'data': data})
+
 
 
 ##                                                              CREATE VİEWS
@@ -98,10 +102,30 @@ def HospitalCreateView(request):
     form = HospitalsForm(request.POST or None)
     if form.is_valid():
         form.save()
-    context = {'form' : form}
-    return render(request, "accounts/register_hospital.html",context)
+        messages.add_message(request, messages.INFO, 'Hospital Created.')
+    context = {'form': form}
+    return render(request, "accounts/register_hospital.html", context)
 
 
+def CommentCreateView(request):
+    form = CommentForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        messages.add_message(request, messages.INFO, 'Comment Sent.')
+    context = {'form': form}
+    return render(request, "accounts/comment_create.html", context)
+
+
+
+def SendPrescriptionView(request):
+    form = SendPrescriptionForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        messages.add_message(request, messages.INFO, 'Prescription Sent.')
+        form = SendPrescriptionForm(None)
+    context = {'form': form}
+    return render(request, "accounts/send_prescription.html", context)
+  
 class DoctorCreateView(CreateView):
     form_class = DoctorForm
     queryset = Doctor.objects.all()
@@ -147,5 +171,3 @@ class DoctorDeleteView(DeleteView):
     def get_object(self):
         id_=self.kwargs.get("id")
         return get_object_or_404(Doctor, id=id_)
-
-

@@ -36,4 +36,3 @@ class Appointment(models.Model):
 
     def snippet(self):
         return self.patient[:15]
-

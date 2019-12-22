@@ -90,5 +90,12 @@ class Migration(migrations.Migration):
             name='hospital',
             field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='accounts.Hospitals'),
         ),
+      
+        migrations.CreateModel(
+            name='Comment',
+            fields=[
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('message', models.CharField(max_length=240)),
+                ('doctor', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='accounts.Doctor')),
+                ('patient', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='accounts.Patient')),
 
-    ]

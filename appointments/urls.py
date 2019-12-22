@@ -2,7 +2,7 @@ from django.conf.urls import url
 from . import views
 from django.urls import path
 from .views import list_of_appointments, list_of_patients, add_appointment, list_of_doctors, list_of_viewAppointments, \
-    list_of_searchPatients
+    list_of_searchPatients, list_of_messages
 
 app_name = 'appointments'
 
@@ -15,6 +15,7 @@ urlpatterns = [
     url(r'^doctors_list/$', list_of_doctors.as_view(), name='list3'),
     url(r'^view_appointments/$', list_of_viewAppointments.as_view(), name='list4'),
     url(r'^search_patients/$', list_of_searchPatients.as_view(), name='list5'),
+    url(r'^check_messages/$', list_of_messages.as_view(), name='list6'),
     url(r'add-appointment/$', views.add_appointment, name='add_appointment'),
     path('', views.AppointmentListView.as_view(), name='appointments_changelist'),
     path('add/', views.AppointmentCreateView.as_view(), name='person_add'),
