@@ -44,6 +44,7 @@ class Hospitals(models.Model):
 
 
 
+
 class Departments(models.Model):
     name = models.CharField(max_length=80)
     hospital = models.ForeignKey(Hospitals, on_delete=models.CASCADE)
@@ -88,3 +89,19 @@ class Prescriptions(models.Model):
     patientName = models.CharField(max_length=50)
     diagnosis = models.CharField(max_length=50)
     recipe = models.TextField()
+
+class Day(models.Model):
+    doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
+    date = models.DateField()
+
+class Slot(models.Model):
+    day = models.ForeignKey(Day, on_delete=models.CASCADE)
+    doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
+    slot1 = models.BooleanField(default=False)
+    slot2 = models.BooleanField(default=False)
+    slot3 = models.BooleanField(default=False)
+    slot4 = models.BooleanField(default=False)
+    slot5 = models.BooleanField(default=False)
+    slot6 = models.BooleanField(default=False)
+    slot7 = models.BooleanField(default=False)
+    slot8 = models.BooleanField(default=False)
