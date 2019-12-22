@@ -9,7 +9,7 @@ from django.contrib.auth.models import Group
 from django.urls import reverse
 from appointments.models import Patient
 from django.views.generic import ListView
-from appointments.models import Appointments
+from appointments.models import Appointment
 
 
 def login_view(request):

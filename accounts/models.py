@@ -28,25 +28,6 @@ class District(models.Model):
         return self.name
 
 
-
-
-####################################################
-#               KULLANILMIYOR. SİLİNCE DB PATLIYOR ANLAMSIZ ŞEKİLDE!!!
-class Hospital(models.Model):
-    name = models.CharField(max_length=100)
-    province = models.ForeignKey(Province, on_delete=models.CASCADE)
-    district =models.ForeignKey(District, on_delete=models.CASCADE)
-    phone = models.CharField(max_length=15)
-    numBeds = models.CharField(max_length=5)
-    numRooms = models.CharField(max_length=5)
-#####################################################
-
-
-
-
-
-
-
 class Hospitals(models.Model):
     name = models.CharField(max_length=100)
     province = models.ForeignKey(Province, on_delete=models.CASCADE)
