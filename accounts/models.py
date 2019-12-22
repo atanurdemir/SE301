@@ -43,6 +43,7 @@ class Hospitals(models.Model):
         return self.name
 
 
+
 class Departments(models.Model):
     name = models.CharField(max_length=80)
     hospital = models.ForeignKey(Hospitals, on_delete=models.CASCADE)
