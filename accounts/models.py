@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractUser, User, Group
 from django.db import models
+from django.urls import reverse
 
 Roles = (
     ('admin', 'ADMIN'),
@@ -56,6 +57,8 @@ class Doctor(models.Model):
 
     def __str__(self):
         return f'{self.name}'
+    def get_absolute_url(self):
+        return reverse("")
 
 class Patient(models.Model):
     name = models.CharField(max_length=50, default='isim')
@@ -68,8 +71,13 @@ class Patient(models.Model):
     def __str__(self):
         return self.name
 
+class Comments(models.Model):
+    doctor = models.CharField(max_length=240)
+    patient = models.CharField(max_length=240)
+    message = models.TextField()
 
-class Comment(models.Model):
-    doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
-    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
-    message = models.CharField(max_length=240)
+
+class Prescriptions(models.Model):
+    patientName = models.CharField(max_length=50)
+    diagnosis = models.CharField(max_length=50)
+    recipe = models.TextField()

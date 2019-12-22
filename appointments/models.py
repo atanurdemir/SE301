@@ -36,9 +36,4 @@ class Appointment(models.Model):
 
     def snippet(self):
         return self.patient[:15]
-class Prescription(models.Model):
-    doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
-    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
-    text = models.CharField(max_length=240)
-    appointment = models.ForeignKey(Appointment, on_delete=models.CASCADE)
 
