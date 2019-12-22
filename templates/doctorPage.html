@@ -69,21 +69,6 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6 mb-4">
-            <div class="card gradient-card">
-                <div class="card-image"
-                     style="background-image: url(https://wallpaperaccess.com/full/1282799.jpg);">
-                    <a href="#!">
-                        <div class="text-white d-flex h-100 mask purple-gradient-rgba" data-toggle="modal"
-                             data-target="#reportPatient">
-                            <div class="first-content align-self-center p-3">
-                                <h3 class="card-title">Report Patient</h3>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
 
         <div class="col-md-6 mb-4">
             <div class="card gradient-card">
@@ -106,9 +91,8 @@
                 <div class="card-image"
                      style="background-image: url(https://wallpaperaccess.com/full/1282799.jpg);">
 
-                    <a href="#!">
-                        <div class="text-white d-flex h-100 mask aqua-gradient-rgba" data-toggle="modal"
-                             data-target="#givePrescription">
+                    <a href="{% url 'send_prescription' %}">
+                        <div class="text-white d-flex h-100 mask aqua-gradient-rgba">
                             <div class="first-content align-self-center p-3">
                                 <h3 class="card-title">Give Prescription</h3>
                             </div>

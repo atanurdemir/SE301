@@ -2,8 +2,9 @@ from django import forms
 from django.contrib.auth import (
     authenticate,
     get_user_model
-
 )
+from accounts.models import Hospitals, Doctor, Comments, Prescriptions
+from django.urls import reverse_lazy
 
 User = get_user_model()
 
@@ -63,7 +64,6 @@ class UserForgotPasswordForm(forms.Form):
             raise forms.ValidationError("This email is not registered")
         return super(UserForgotPasswordForm, self).clean(*args, **kwargs)
 
-from accounts.models import Hospitals, Doctor
 class HospitalsForm(forms.ModelForm):
     class Meta:
         model = Hospitals
@@ -88,3 +88,23 @@ class DoctorForm(forms.ModelForm):
             'department',
             'hospital'
         ]
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comments
+        fields = [
+            'patient',
+            'doctor',
+            'message'
+        ]
+
+class SendPrescriptionForm(forms.ModelForm):
+    presc = Prescriptions.objects.order_by('id').last()
+    class Meta:
+        model = Prescriptions
+        fields = [
+            'patientName',
+            'diagnosis',
+            'recipe'
+        ]
+        success_url = reverse_lazy('git_presc:index')

@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    <title>Hospital Register Page</title>
+    <title>Prescription</title>
 {% endblock %}
 
 {% block menuTitle %}
-    <h1 class="display-2"><b>Register Page</b></h1>
+    <h1 class="display-2"><b>Prescription Page</b></h1>
 {% endblock %}
 
 {% block leftNavbar %}
@@ -25,10 +25,11 @@
 {% block container %}
     <h2 style="height:85px"></h2>
     <form method="POST">
-        <h1>Hospital Register</h1>
+        <h1>Write a Prescription</h1>
         {% csrf_token %}
-            {{ form.as_p }}
+        {{ form.as_p }}
         <input type="submit" class="btn btn-info" role="button" value="Save">
+        <a href="#" class="btn btn-info" role="button">Print</a>
     </form>
 
 {% endblock %}

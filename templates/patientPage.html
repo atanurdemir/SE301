@@ -47,7 +47,7 @@
                 <div class="card-image"
                      style="background-image: url(https://wallpaperaccess.com/full/1282799.jpg);">
 
-                    <a href="#!">
+                    <a href={% url 'appointments:person_add' %}>
                         <div class="text-white d-flex h-100 mask aqua-gradient-rgba">
                             <div class="first-content align-self-center p-3">
                                 <h3 class="card-title">Make an Appointment</h3>
@@ -98,6 +98,22 @@
                         <div class="text-white d-flex h-100 mask aqua-gradient-rgba">
                             <div class="first-content align-self-center p-3">
                                 <h3 class="card-title">Cancel a Appointment</h3>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+            <div class="col-md-6 mb-4">
+            <div class="card gradient-card">
+                <div class="card-image"
+                     style="background-image: url(https://wallpaperaccess.com/full/1282799.jpg);">
+
+                    <a href="{% url 'comment_create' %}">
+                        <div class="text-white d-flex h-100 mask aqua-gradient-rgba">
+                            <div class="first-content align-self-center p-3">
+                                <h3 class="card-title">Contact to Admin</h3>
                             </div>
                         </div>
                     </a>

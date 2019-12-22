@@ -1,0 +1,18 @@
+<form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="user"></label>
+    <input id="user" type="text" name="user" value="{{ user.id }}" ><br>
+    <label for="project">Project title: </label>
+
+    <input id="project" type="text" name="project" value="{{ prescriptions.id }}" ><br>
+
+<!--Here - "project.id" I need latest project ID-->
+
+    <label for="user_start_date">Start date: </label>
+    <input id="user_start_date" type="date" name="user_start_date" value="{{ prescriptions.user_start_date }}" ><br>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-success">Submit</button>
+        </div>
+    </div>
+</form>
