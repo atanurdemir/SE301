@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Appointments, Patient, Doctor
+from .models import Appointment, Patient, Doctor
 from django.http import HttpResponse
 from .forms import AppointmentForm
 
@@ -16,11 +16,11 @@ from django.views.generic import DetailView, ListView
 
 class list_of_appointments(ListView):
     # queryset = Appointment.objects.all()
-    model = Appointments
+    model = Appointment
     template_name = 'appointments/appointment_list.html'
 
 class list_of_viewAppointments(ListView):
-        model = Appointments
+        model = Appointment
         template_name = 'appointments/view_appointments.html'
 
 class list_of_searchPatients(ListView):
@@ -62,19 +62,19 @@ def add_appointment(request):
 from django.views.generic import ListView, CreateView,DeleteView,UpdateView
 from django.urls import reverse_lazy
 class AppointmentListView(ListView):
-    model = Appointments
+    model = Appointment
     context_object_name = 'appointments'
 
 
 class AppointmentCreateView(CreateView):
-    model = Appointments
+    model = Appointment
     fields = ("Date", "province", "district", "hospital", "clinic", "doctor")
     success_url = reverse_lazy('appointments_changelist')
 
 
 
 class AppointmentUpdateView(UpdateView):
-    model = Appointments
+    model = Appointment
     fields = ("Date", "province", "district", "hospital", "clinic", "doctor")
     success_url = reverse_lazy('appointments_changelist')
 

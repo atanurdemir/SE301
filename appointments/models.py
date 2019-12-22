@@ -21,7 +21,7 @@ from accounts.models import *
 #     def snippet(self):
 #         return self.patient[:15]
 
-class Appointments(models.Model):
+class Appointment(models.Model):
     Date = models.DateField()
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
@@ -40,5 +40,5 @@ class Prescription(models.Model):
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
     patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     text = models.CharField(max_length=240)
-    appointment = models.ForeignKey(Appointments, on_delete=models.CASCADE)
+    appointment = models.ForeignKey(Appointment, on_delete=models.CASCADE)
 

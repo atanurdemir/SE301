@@ -1,12 +1,12 @@
 from django.forms import ModelForm
-from .models import Appointments
+from .models import Appointment
 from accounts.models import District, Hospitals, Departments, Doctor
 from django.http import request
 from accounts.models import User
 
 class AppointmentForm(ModelForm):
     class Meta:
-        model = Appointments
+        model = Appointment
         fields = ("patient", "Date", "province", "district", "hospital", "clinic", "doctor")
         exclude = ()
     def __init__(self, *args, **kwargs):
