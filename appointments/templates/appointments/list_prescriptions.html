@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    <title>Appointments</title>
+    <title>Patients</title>
 {% endblock %}
 
 {% block menuTitle %}
@@ -25,27 +25,22 @@
 {% block container %}
     <h2 style="height:70px"></h2>
     <table class="table table-hover">
-    <input class="form-control" id="myInput" type="text" placeholder="Search hospitals...">
+        <input class="form-control" id="myInput" type="text" placeholder="Search patient...">
         <thead>
         <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Phone</th>
-            <th scope="col">Province</th>
-            <th scope="col">District</th>
-            <th scope="col">Number of Beds</th>
-            <th scope="col">Number of Rooms</th>
+            <th scope="col">Patient Name</th>
+            <th scope="col">Diagnosis</th>
+            <th scope="col">Recipe</th>
         </tr>
         </thead>
         <tbody id="myTable">
-        {% for hospital in object_list %}
+        {% for prescriptions in object_list %}
+
 
             <tr>
-                <td scope="row">{{ hospital.name }}</td>
-                <td scope="row">{{ hospital.phone }}</td>
-                <td scope="row">{{ hospital.district.name }}</td>
-                <td scope="row">{{ hospital.province.name }}</td>
-                <td scope="row">{{ hospital.numBeds }}</td>
-                <td scope="row">{{ hospital.numRooms }}</td>
+                <td scope="row">{{ prescriptions.patientName }}</td>
+                <td scope="row">{{ prescriptions.diagnosis }}</td>
+                <td scope="row">{{ prescriptions.recipe }}</td>
 
             </tr>
         {% endfor %}
