@@ -20,10 +20,11 @@ urlpatterns = [
     url(r'itemget/$', views.itemget, {'template_name': 'doctorPage.html'}, name='itemget'),
 
     url(r'registerHospital/$',HospitalCreateView, name = 'register_hospital'),
-    url(r'registerDoctor/$', DoctorCreateView, name="register_doctor"),
+    url(r'registerDoctor/$', DoctorCreateView.as_view(), name="register_doctor"),
     url(r'commentCreate/$', CommentCreateView, name="comment_create"),
     url(r'^sendPrescription/$', SendPrescriptionView, name="send_prescription"),
-    path('<int:id>/',DoctorDetailView.as_view(), name="doctor_detail" ),
+    path('<int:id>/', DoctorDetailView.as_view(), name="doctor_detail"),
     path('<int:id>/edit/', DoctorUpdateView.as_view(), name='doctor_edit'),
-    ## backup
+    path('<int:id>/delete/', DoctorDeleteView.as_view(), name='doctor_delete'),
+
 ]
