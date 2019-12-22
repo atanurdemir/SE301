@@ -70,7 +70,8 @@ class AppointmentCreateView(CreateView):
     model = Appointment
     fields = ("Date", "province", "district", "hospital", "clinic", "doctor")
     success_url = reverse_lazy('appointments_changelist')
-
+    def user(request):
+        Appointment.patient = request.user()
 
 
 class AppointmentUpdateView(UpdateView):

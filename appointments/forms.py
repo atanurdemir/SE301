@@ -8,12 +8,11 @@ class AppointmentForm(ModelForm):
     class Meta:
         model = Appointment
         fields = ("patient", "Date", "province", "district", "hospital", "clinic", "doctor")
-        exclude = ()
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         # self.fields['district'] = District.objects.none()
         self.fields['district'] = District.objects.none()
-        self.fields['hospital'] = Hospitals.objects.none()
         if 'province' in self.data:
             try:
                 province_id = int(self.data.get('province'))
