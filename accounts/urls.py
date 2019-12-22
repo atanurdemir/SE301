@@ -22,7 +22,8 @@ urlpatterns = [
     url(r'registerHospital/$',HospitalCreateView, name = 'register_hospital'),
     url(r'registerDoctor/$', DoctorCreateView, name="register_doctor"),
     url(r'commentCreate/$', CommentCreateView, name="comment_create"),
-    url(r'^sendPrescription/$', SendPrescriptionView, name="send_prescription")
+    url(r'^sendPrescription/$', SendPrescriptionView, name="send_prescription"),
     path('<int:id>/',DoctorDetailView.as_view(), name="doctor_detail" ),
     path('<int:id>/edit/', DoctorUpdateView.as_view(), name='doctor_edit'),
+    ## backup
 ]
