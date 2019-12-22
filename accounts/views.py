@@ -9,10 +9,10 @@ from django.shortcuts import redirect
 from django.contrib.auth.models import Group
 from django.urls import reverse, reverse_lazy
 from appointments.models import Patient
-from .models import Doctor
+from .models import Doctor, Comments, Hospitals, Prescriptions
 from django.views.generic import ListView, UpdateView, DeleteView, CreateView, DetailView
 from appointments.models import Appointment
-from django.contrib import messages
+from django.contrib.messages.views import SuccessMessageMixin
 
 
 def login_view(request):
@@ -98,38 +98,50 @@ def itemget(request):
 
 
 ##                                                              CREATE VİEWS
-def HospitalCreateView(request):
-    form = HospitalsForm(request.POST or None)
-    if form.is_valid():
-        form.save()
-        messages.add_message(request, messages.INFO, 'Hospital Created.')
-    context = {'form': form}
-    return render(request, "accounts/register_hospital.html", context)
+class HospitalCreateView(SuccessMessageMixin, CreateView):
+    form_class = HospitalsForm
+    queryset = Hospitals.objects.all()
+    template_name = 'accounts/register_hospital.html'
+    success_url = reverse_lazy('admin')
+    def form_valid(self, form):
+        print(form.cleaned_data)
+        return super().form_valid(form)
+    success_message = "Hospital %(name) saved successfully."
 
 
-def CommentCreateView(request):
-    form = CommentForm(request.POST or None)
-    if form.is_valid():
-        form.save()
-        messages.add_message(request, messages.INFO, 'Comment Sent.')
-    context = {'form': form}
-    return render(request, "accounts/comment_create.html", context)
+class CommentCreateView(CreateView):
+    form_class = CommentForm
+    queryset = Comments.objects.all()
+    template_name = 'accounts/comment_create.html'
+    success_url = reverse_lazy('comment_create')
+    success_message = "Comment sent successfully!"
+
+    def form_valid(self, form):
+        print(form.cleaned_data)
+        return super().form_valid(form)
 
 
 
-def SendPrescriptionView(request):
-    form = SendPrescriptionForm(request.POST or None)
-    if form.is_valid():
-        form.save()
-        messages.add_message(request, messages.INFO, 'Prescription Sent.')
-        form = SendPrescriptionForm(None)
-    context = {'form': form}
-    return render(request, "accounts/send_prescription.html", context)
+class SendPrescriptionView(CreateView):
+    form_class = SendPrescriptionForm
+    queryset = Prescriptions.objects.all()
+    template_name = 'accounts/send_prescription.html'
+    success_url = reverse_lazy('send_prescription')
+    success_message = "Prescription sent successfully"
+
+    def form_valid(self, form):
+        print(form.cleaned_data)
+        return super().form_valid(form)
+
+
   
 class DoctorCreateView(CreateView):
     form_class = DoctorForm
     queryset = Doctor.objects.all()
     template_name = 'accounts/register_doctor.html'
+    success_url = reverse_lazy('appointments:list3')
+    success_message = "Doctor %(name) saved successfully."
+
     def form_valid(self, form):
         print(form.cleaned_data)
         return super().form_valid(form)
