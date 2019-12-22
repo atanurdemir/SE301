@@ -83,12 +83,6 @@ class Comments(models.Model):
     patient = models.CharField(max_length=240)
     message = models.TextField()
 
-
-class Comments(models.Model):
-    doctor = models.CharField(max_length=240)
-    patient = models.CharField(max_length=240)
-    message = models.TextField()
-
 class Prescriptions(models.Model):
     patientName = models.CharField(max_length=50)
     diagnosis = models.CharField(max_length=50)
