@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Appointment, Patient, Doctor, Comments
+from .models import Appointment, Patient, Doctor, Comments, Hospitals
 from django.http import HttpResponse
 from .forms import AppointmentForm
 from django.views.generic import ListView, CreateView, DeleteView, UpdateView
@@ -36,6 +36,10 @@ class list_of_doctors(ListView):
     model = Doctor
     template_name = 'appointments/doctors_list.html'
 
+class list_of_hospitals(ListView):
+    model = Hospitals
+    template_name = 'appointments/hospital_list.html'
+
 
 ## PATIENT LISTING AT ADMIN'S SCREEN
 class list_of_patients(ListView):
@@ -71,7 +75,6 @@ def add_appointment(request):
 class AppointmentListView(ListView):
     model = Appointment
     context_object_name = 'appointments'
-
 
 class AppointmentCreateView(CreateView):
     model = Appointment
