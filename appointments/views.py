@@ -41,6 +41,7 @@ class list_of_hospitals(ListView):
     template_name = 'appointments/hospital_list.html'
 
 
+
 ## PATIENT LISTING AT ADMIN'S SCREEN
 class list_of_patients(ListView):
     model = Patient

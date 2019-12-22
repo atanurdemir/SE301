@@ -97,7 +97,7 @@ def itemget(request):
 
 
 
-##                                                              CREATE VİEWS
+## ######  ######  ######  ######  ######  ######       CREATE VİEWS        ######  ######  ######  ######  ######  ######  ######
 class HospitalCreateView(SuccessMessageMixin, CreateView):
     form_class = HospitalsForm
     queryset = Hospitals.objects.all()
@@ -109,7 +109,7 @@ class HospitalCreateView(SuccessMessageMixin, CreateView):
     success_message = "Hospital %(name) saved successfully."
 
 
-class CommentCreateView(CreateView):
+class CommentCreateView(SuccessMessageMixin,CreateView):
     form_class = CommentForm
     queryset = Comments.objects.all()
     template_name = 'accounts/comment_create.html'
@@ -122,7 +122,7 @@ class CommentCreateView(CreateView):
 
 
 
-class SendPrescriptionView(CreateView):
+class SendPrescriptionView(SuccessMessageMixin, CreateView):
     form_class = SendPrescriptionForm
     queryset = Prescriptions.objects.all()
     template_name = 'accounts/send_prescription.html'
@@ -135,7 +135,7 @@ class SendPrescriptionView(CreateView):
 
 
   
-class DoctorCreateView(CreateView):
+class DoctorCreateView(SuccessMessageMixin, CreateView):
     form_class = DoctorForm
     queryset = Doctor.objects.all()
     template_name = 'accounts/register_doctor.html'
@@ -146,7 +146,8 @@ class DoctorCreateView(CreateView):
         print(form.cleaned_data)
         return super().form_valid(form)
 
-#                                                               DETAIL VİEWS
+
+######  ######  ######  ######  ######  ######     DETAIL VİEWS         ######  ######  ######  ######  ######  ######
 from django.shortcuts import get_object_or_404
 
 
@@ -157,14 +158,20 @@ class DoctorDetailView(DetailView):
         id_=self.kwargs.get("id")
         return get_object_or_404(Doctor, id=id_)
 
+class HospitalDetailView(DetailView):
+        template_name = 'appointments/hospital_list.html'
 
-    #                                                           UPDATE VIEWS
+        def get_object(self):
+            id_ = self.kwargs.get("id")
+            return get_object_or_404(Hospitals, id=id_)
+    ###### ######  ######  ######  ######  ######            UPDATE VIEWS            ######  ######  ######  ######  ######
 
-class DoctorUpdateView(UpdateView):
+class DoctorUpdateView(SuccessMessageMixin,UpdateView):
     form_class = DoctorForm
     queryset = Doctor.objects.all()
     template_name = 'accounts/register_doctor.html'
     success_url = reverse_lazy('appointments:list3')
+    success_message = "Doctor updated successfully."
     def get_object(self):
         id_=self.kwargs.get("id")
         return get_object_or_404(Doctor, id=id_)
@@ -172,10 +179,20 @@ class DoctorUpdateView(UpdateView):
         print(form.cleaned_data)
         return super().form_valid(form)
 
-# HOSPITAL UPDATE VIEW EKLENECEK
 
+class HospitalUpdateView(UpdateView):
+    form_class = HospitalsForm
+    queryset = Hospitals.objects.all()
+    template_name = 'accounts/register_hospital.html'
+    success_url = reverse_lazy('appointments:list7')
+    def get_object(self):
+        id_=self.kwargs.get("id")
+        return get_object_or_404(Hospitals, id=id_)
+    def form_valid(self, form):
+        print(form.cleaned_data)
+        return super().form_valid(form)
 
-#                                                           DELETE VIEWS
+#  ######  ######  ######  ######  ######  ######            DELETE VIEWS          ######  ######  ######  ######  ######
 class DoctorDeleteView(DeleteView):
     template_name = 'accounts/deleteDoctor.html'
     queryset = Doctor.objects.all()
@@ -183,3 +200,12 @@ class DoctorDeleteView(DeleteView):
     def get_object(self):
         id_=self.kwargs.get("id")
         return get_object_or_404(Doctor, id=id_)
+
+class HospitalDeleteView(DeleteView):
+    template_name = 'accounts/delete_hospital.html'
+    queryset = Hospitals.objects.all()
+    success_url = reverse_lazy('appointments:list7')
+    def get_object(self):
+        id_=self.kwargs.get("id")
+        return get_object_or_404(Hospitals, id=id_)
+
