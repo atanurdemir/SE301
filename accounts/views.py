@@ -7,9 +7,10 @@ from django.contrib.auth.decorators import login_required
 from django.http import request
 from django.shortcuts import redirect
 from django.contrib.auth.models import Group
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from appointments.models import Patient
-from django.views.generic import ListView, CreateView
+from .models import Doctor
+from django.views.generic import ListView, UpdateView, DeleteView, CreateView, DetailView
 from appointments.models import Appointment
 from django.contrib import messages
 
@@ -95,6 +96,8 @@ def itemget(request):
     return render(request, 'doctorPage.html', {'data': data})
 
 
+
+##                                                              CREATE VİEWS
 def HospitalCreateView(request):
     form = HospitalsForm(request.POST or None)
     if form.is_valid():
@@ -113,14 +116,6 @@ def CommentCreateView(request):
     return render(request, "accounts/comment_create.html", context)
 
 
-def DoctorCreateView(request):
-    form = DoctorForm(request.POST or None)
-    if form.is_valid():
-        form.save()
-        messages.add_message(request, messages.INFO, 'Doctor Created.')
-    context = {'form': form}
-    return render(request, "accounts/register_doctor.html", context)
-
 
 def SendPrescriptionView(request):
     form = SendPrescriptionForm(request.POST or None)
@@ -130,3 +125,49 @@ def SendPrescriptionView(request):
         form = SendPrescriptionForm(None)
     context = {'form': form}
     return render(request, "accounts/send_prescription.html", context)
+  
+class DoctorCreateView(CreateView):
+    form_class = DoctorForm
+    queryset = Doctor.objects.all()
+    template_name = 'accounts/register_doctor.html'
+    def form_valid(self, form):
+        print(form.cleaned_data)
+        return super().form_valid(form)
+
+#                                                               DETAIL VİEWS
+from django.shortcuts import get_object_or_404
+
+
+
+class DoctorDetailView(DetailView):
+    template_name = 'appointments/doctors_list.html'
+    def get_object(self):
+        id_=self.kwargs.get("id")
+        return get_object_or_404(Doctor, id=id_)
+
+
+    #                                                           UPDATE VIEWS
+
+class DoctorUpdateView(UpdateView):
+    form_class = DoctorForm
+    queryset = Doctor.objects.all()
+    template_name = 'accounts/register_doctor.html'
+    success_url = reverse_lazy('appointments:list3')
+    def get_object(self):
+        id_=self.kwargs.get("id")
+        return get_object_or_404(Doctor, id=id_)
+    def form_valid(self, form):
+        print(form.cleaned_data)
+        return super().form_valid(form)
+
+# HOSPITAL UPDATE VIEW EKLENECEK
+
+
+#                                                           DELETE VIEWS
+class DoctorDeleteView(DeleteView):
+    template_name = 'accounts/deleteDoctor.html'
+    queryset = Doctor.objects.all()
+    success_url = reverse_lazy('appointments:list3')
+    def get_object(self):
+        id_=self.kwargs.get("id")
+        return get_object_or_404(Doctor, id=id_)

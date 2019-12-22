@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractUser, User, Group
 from django.db import models
+from django.urls import reverse
 
 
 Roles = (
@@ -62,6 +63,8 @@ class Doctor(models.Model):
 
     def __str__(self):
         return f'{self.name}'
+    def get_absolute_url(self):
+        return reverse("")
 
 
 class Patient(models.Model):
@@ -75,12 +78,16 @@ class Patient(models.Model):
     def __str__(self):
         return self.name
 
-
 class Comments(models.Model):
     doctor = models.CharField(max_length=240)
     patient = models.CharField(max_length=240)
     message = models.TextField()
 
+
+class Comments(models.Model):
+    doctor = models.CharField(max_length=240)
+    patient = models.CharField(max_length=240)
+    message = models.TextField()
 
 class Prescriptions(models.Model):
     patientName = models.CharField(max_length=50)
