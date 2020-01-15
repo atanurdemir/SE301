@@ -3,7 +3,7 @@ from django.contrib.auth import (
     authenticate,
     get_user_model
 )
-from accounts.models import Hospitals, Doctor, Comments
+from accounts.models import Hospitals, Doctor, Comments, Departments
 # Prescription
 from django.urls import reverse_lazy
 
@@ -40,7 +40,8 @@ class UserRegisterForm(forms.ModelForm):
             'username',
             'email',
             'email2',
-            'password'
+            'password',
+
         ]
 
     def clean(self, *args, **kwargs):
@@ -53,6 +54,50 @@ class UserRegisterForm(forms.ModelForm):
             raise forms.ValidationError(
                 "This email has already been registered")
         return super(UserRegisterForm, self).clean(*args, **kwargs)
+
+from django.contrib.auth.forms import UserCreationForm
+class UserRegisterForm2(UserCreationForm):
+    email = forms.EmailField(label='Email address')
+    email2 = forms.EmailField(label='Confirm Email')
+    hospital = forms.ChoiceField(
+        choices=[(x.id,x.name) for x in Hospitals.objects.all()]
+         )
+
+
+
+    class Meta:
+        model = User
+        fields = [
+            'username',
+            'email',
+            'email2',
+
+            'hospital',
+
+        ]
+
+    def clean(self, *args, **kwargs):
+        email = self.cleaned_data.get('email')
+        email2 = self.cleaned_data.get('email2')
+        if email != email2:
+            raise forms.ValidationError("Emails must match")
+        email_qs = User.objects.filter(email=email)
+        if email_qs.exists():
+            raise forms.ValidationError(
+                "This email has already been registered")
+        return super(UserRegisterForm2, self).clean(*args, **kwargs)
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == 'hospital':
+          return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
+
+    def save(self, commit=True):
+      instance = super().save(commit=False)
+      pk = self.cleaned_data['hospital']
+      instance.hospital = Hospitals.objects.get(pk=pk)
+      instance.save(commit)
+      return instance
 
 
 class UserForgotPasswordForm(forms.Form):
