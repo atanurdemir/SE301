@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .models import Appointment, Patient, Doctor, Comments, Hospitals, Prescriptions
-from django.http import HttpResponse
+from .models import Appointment, Patient, Doctor, Comments, Hospitals
+from django.http import HttpResponse, HttpResponseRedirect
 from .forms import AppointmentForm
 from django.views.generic import ListView, CreateView, DeleteView, UpdateView
 from django.urls import reverse_lazy
@@ -59,9 +59,9 @@ class list_of_messages(ListView):
         template_name = 'appointments/check_messages.html'
 
 
-class list_of_recipes(ListView):
-    model = Prescriptions
-    template_name = 'appointments/list_prescriptions.html'
+# class list_of_recipes(ListView):
+#     model = Prescriptions
+#     template_name = 'appointments/list_prescriptions.html'
 
 ##APPOINTMENT SAVING TO DATABASE
 
@@ -84,10 +84,16 @@ class AppointmentListView(ListView):
 class AppointmentCreateView(CreateView):
     model = Appointment
     fields = ("Date", "province", "district", "hospital", "clinic", "doctor")
-    success_url = reverse_lazy('appointments_changelist')
+    success_url = reverse_lazy('patient')
 
     def user(request):
         Appointment.patient = request.user()
+
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.user = self.request.user
+        self.object.save()
+        return HttpResponseRedirect(self.get_success_url())
 
 
 class AppointmentUpdateView(UpdateView):

@@ -1,15 +1,16 @@
 from django.conf import settings
 from django.shortcuts import render, redirect
 from django.contrib.auth import (authenticate, get_user_model, login, logout)
-from .forms import UserLoginForm, UserRegisterForm, UserForgotPasswordForm, HospitalsForm, DoctorForm, CommentForm, \
-    SendPrescriptionForm
+from .forms import UserLoginForm, UserRegisterForm, UserForgotPasswordForm, HospitalsForm, DoctorForm, CommentForm
+    # SendPrescriptionForm
 from django.contrib.auth.decorators import login_required
 from django.http import request
 from django.shortcuts import redirect
 from django.contrib.auth.models import Group
 from django.urls import reverse, reverse_lazy
 from appointments.models import Patient
-from .models import Doctor, Comments, Hospitals, Prescriptions
+from .models import Doctor, Comments, Hospitals
+# Prescription
 from django.views.generic import ListView, UpdateView, DeleteView, CreateView, DetailView
 from appointments.models import Appointment
 from django.contrib.messages.views import SuccessMessageMixin
@@ -62,7 +63,7 @@ def register_view2(request):
         password = form.cleaned_data.get('password')
         user.set_password(password)
         user.save()
-        group = Group.objects.get(name='patient')
+        group = Group.objects.get(name='user')
         user.groups.add(group)
         if next:
             return redirect(next)
@@ -122,16 +123,16 @@ class CommentCreateView(SuccessMessageMixin,CreateView):
 
 
 
-class SendPrescriptionView(SuccessMessageMixin, CreateView):
-    form_class = SendPrescriptionForm
-    queryset = Prescriptions.objects.all()
-    template_name = 'accounts/send_prescription.html'
-    success_url = reverse_lazy('send_prescription')
-    success_message = "Prescription sent successfully"
-
-    def form_valid(self, form):
-        print(form.cleaned_data)
-        return super().form_valid(form)
+# class SendPrescriptionView(SuccessMessageMixin, CreateView):
+#     form_class = SendPrescriptionForm
+#     queryset = Prescription.objects.all()
+#     template_name = 'accounts/send_prescription.html'
+#     success_url = reverse_lazy('send_prescription')
+#     success_message = "Prescription sent successfully"
+#
+#     def form_valid(self, form):
+#         print(form.cleaned_data)
+#         return super().form_valid(form)
 
 
   
