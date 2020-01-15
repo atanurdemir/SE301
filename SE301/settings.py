@@ -87,17 +87,15 @@ WSGI_APPLICATION = 'SE301.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'heroku_2b72da0cbefbafb',
-        'USER': 'b5382e65e06c28',
-        'PASSWORD': '78393a8d',
-        'HOST': 'eu-cdbr-west-02.cleardb.net',
-        'PORT': '3306',
-        'OPTIONS': {
-            'sql_mode': 'traditional',
-        }
-    }
+        'default':
+                 {'ENGINE': 'django.db.backends.mysql',
+                  'NAME': 'django',
+                  'USER': 'root',
+                  'PASSWORD': '',
+                  'HOST': 'localhost',
+                  'PORT': '3306'
+                  }
+
 }
 
 

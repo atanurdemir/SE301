@@ -3,7 +3,8 @@ from django.contrib.auth import (
     authenticate,
     get_user_model
 )
-from accounts.models import Hospitals, Doctor, Comments, Prescriptions
+from accounts.models import Hospitals, Doctor, Comments
+# Prescription
 from django.urls import reverse_lazy
 
 User = get_user_model()
@@ -77,17 +78,29 @@ class HospitalsForm(forms.ModelForm):
             ]
 
 class DoctorForm(forms.ModelForm):
+    email2 = forms.EmailField()
     class Meta:
         model = Doctor
         fields = [
             'name',
             'title',
             'email',
+            'email2',
             'gsm',
             'address',
             'department',
             'hospital'
         ]
+    def clean(self, *args, **kwargs):
+        email = self.cleaned_data.get('email')
+        email2 = self.cleaned_data.get('email2')
+        if email != email2:
+            raise forms.ValidationError("Emails must match")
+        email_qs = Doctor.objects.filter(email=email)
+        if email_qs.exists():
+            raise forms.ValidationError(
+                "This email has already been registered")
+        return super(DoctorForm, self).clean(*args, **kwargs)
 
 class CommentForm(forms.ModelForm):
     class Meta:
@@ -98,13 +111,13 @@ class CommentForm(forms.ModelForm):
             'message'
         ]
 
-class SendPrescriptionForm(forms.ModelForm):
-    presc = Prescriptions.objects.order_by('id').last()
-    class Meta:
-        model = Prescriptions
-        fields = [
-            'patientName',
-            'diagnosis',
-            'recipe'
-        ]
-        success_url = reverse_lazy('git_presc:index')
+# class SendPrescriptionForm(forms.ModelForm):
+#     presc = Prescription.objects.order_by('id').last()
+#     class Meta:
+#         model = Prescription
+#         fields = [
+#             'patientName',
+#             'diagnosis',
+#             'recipe'
+#         ]
+#         success_url = reverse_lazy('git_presc:index')
