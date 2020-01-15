@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.shortcuts import render, redirect
 from django.contrib.auth import (authenticate, get_user_model, login, logout)
-from .forms import UserLoginForm, UserRegisterForm, UserForgotPasswordForm, HospitalsForm, DoctorForm, CommentForm
+from .forms import UserLoginForm, UserRegisterForm, UserForgotPasswordForm, HospitalsForm, DoctorForm, CommentForm,UserRegisterForm2
     # SendPrescriptionForm
 from django.contrib.auth.decorators import login_required
 from django.http import request
@@ -37,13 +37,13 @@ def login_view(request):
 
 def register_view(request):
     next = request.GET.get('next')
-    form = UserRegisterForm(request.POST or None)
+    form = UserRegisterForm2(request.POST or None)
     if form.is_valid():
         user = form.save(commit=False)
         password = form.cleaned_data.get('password')
         user.set_password(password)
         user.save()
-        group = Group.objects.get(name='doctor')
+        group = Group.objects.get(name='Doctor')
         user.groups.add(group)
         if next:
             return redirect(next)
@@ -61,9 +61,10 @@ def register_view2(request):
     if form.is_valid():
         user = form.save(commit=False)
         password = form.cleaned_data.get('password')
+
         user.set_password(password)
         user.save()
-        group = Group.objects.get(name='user')
+        group = Group.objects.get(name='Patient')
         user.groups.add(group)
         if next:
             return redirect(next)
