@@ -11,7 +11,10 @@ from accounts.views import list_of_patients, \
     CommentCreateView, \
     HospitalUpdateView, \
     HospitalDeleteView, \
-    SendPrescriptionView
+    SendPrescriptionView, \
+    DepartmentCreateView, \
+    PatientUpdateView
+
 
 appname = 'accounts'
 urlpatterns = [
@@ -20,15 +23,18 @@ urlpatterns = [
     url(r'^login/$', views.login_view, name="login"),
     # url(r'^$', list_of_patients.as_view(), name="patientList"),
     url(r'itemget/$', views.itemget, {'template_name': 'doctorPage.html'}, name='itemget'),
-
+    url(r'logout/$', views.logout_view, name='logout'),
     url(r'registerHospital/$', HospitalCreateView.as_view(), name='register_hospital'),
     url(r'registerDoctor/$', DoctorCreateView.as_view(), name="register_doctor"),
     url(r'commentCreate/$', CommentCreateView.as_view(), name="comment_create"),
+    url(r'departmentCreate/$', DepartmentCreateView.as_view(), name="department_create"),
+
     url(r'^sendPrescription/$', SendPrescriptionView.as_view(), name="send_prescription"),
     path('<int:id>/', DoctorDetailView.as_view(), name="doctor_detail"),
     path('<int:id>/edit/', DoctorUpdateView.as_view(), name='doctor_edit'),
     path('<int:id>/delete/', DoctorDeleteView.as_view(), name='doctor_delete'),
     path('<int:id>/editH/', HospitalUpdateView.as_view(), name='hospital_edit'),
     path('<int:id>/deleteH/', HospitalDeleteView.as_view(), name='hospital_delete'),
+    # path('<int:id>/editP/', PatientUpdateView.as_view(), name='patient_edit'),
 
 ]

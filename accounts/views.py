@@ -1,7 +1,8 @@
 from django.conf import settings
 from django.shortcuts import render, redirect
 from django.contrib.auth import (authenticate, get_user_model, login, logout)
-from .forms import UserLoginForm, UserRegisterForm, UserForgotPasswordForm, HospitalsForm, DoctorForm, CommentForm, UserRegisterForm2, SendPrescriptionForm
+from .forms import UserLoginForm, UserRegisterForm, UserForgotPasswordForm, HospitalsForm, DoctorForm, CommentForm, UserRegisterForm2, SendPrescriptionForm,\
+    DepartmentForm, PatientForm
 from django.contrib.auth.decorators import login_required
 from django.http import request
 from django.shortcuts import redirect
@@ -9,7 +10,7 @@ from django.contrib.auth.models import Group
 from django.urls import reverse, reverse_lazy
 from appointments.models import Patient
 from django.http import HttpResponseRedirect
-from .models import Doctor, Comments, Hospitals, Prescription
+from .models import Doctor, Comments, Hospitals, Prescription, Departments
 from django.views.generic import ListView, UpdateView, DeleteView, CreateView, DetailView
 from appointments.models import Appointment
 from django.contrib.messages.views import SuccessMessageMixin
@@ -121,25 +122,37 @@ class CommentCreateView(SuccessMessageMixin,CreateView):
     #     print(form.cleaned_data)
     #     return super().form_valid(form)
 
-    def user(request):
-        Comments.patient = request.user
+    # def user(request):
+    #     Comments.patient = request.user
+    #
+    # def form_valid(self, form):
+    #     self.object = form.save(commit=False)
+    #     self.object.user = self.request.user
+    #     self.object.save()
+    #     return HttpResponseRedirect(self.get_success_url())
+    # def get_object(self):
+    #     id_ = self.user.id
+    #     return get_object_or_404(Patient, pk=id_)
+    #
+    # def form_valid(self, form):
+    #     print(form.cleaned_data)
+    #     return super().form_valid(form)
+    def dispatch(self, *args, **kwargs):
+        return super(CommentCreateView, self).dispatch(*args, **kwargs)
 
-    def form_valid(self, form):
-        self.object = form.save(commit=False)
-        self.object.user = self.request.user
-        self.object.save()
-        return HttpResponseRedirect(self.get_success_url())
+    def get_queryset(self):
+        return Comments.objects.filter(patient=self.request.user())
 
 class SendPrescriptionView(SuccessMessageMixin, CreateView):
     form_class = SendPrescriptionForm
     queryset = Prescription.objects.all()
     template_name = 'accounts/send_prescription.html'
     success_url = reverse_lazy('send_prescription')
-    success_message = "Prescription sent successfully"
 
     def form_valid(self, form):
         print(form.cleaned_data)
         return super().form_valid(form)
+    success_message = "Prescription sent successfully"
 
 
 class DoctorCreateView(SuccessMessageMixin, CreateView):
@@ -153,6 +166,17 @@ class DoctorCreateView(SuccessMessageMixin, CreateView):
         print(form.cleaned_data)
         return super().form_valid(form)
 
+class DepartmentCreateView(CreateView, SuccessMessageMixin):
+
+    form_class = DepartmentForm
+    queryset = Departments.objects.all()
+    template_name = 'accounts/create_department.html'
+    success_url = reverse_lazy('admin')
+    success_message = "Department %name saved successfully."
+
+    def form_valid(self, form):
+        print(form.cleaned_data)
+        return super().form_valid(form)
 
 ######  ######  ######  ######  ######  ######     DETAIL VİEWS         ######  ######  ######  ######  ######  ######
 from django.shortcuts import get_object_or_404
@@ -172,6 +196,7 @@ class HospitalDetailView(DetailView):
     def get_object(self):
         id_ = self.kwargs.get("id")
         return get_object_or_404(Hospitals, id=id_)
+
 
 
 ###### ######  ######  ######  ######  ######            UPDATE VIEWS            ######  ######  ######  ######  ######
@@ -205,6 +230,20 @@ class HospitalUpdateView(UpdateView):
     def form_valid(self, form):
         print(form.cleaned_data)
         return super().form_valid(form)
+
+class PatientUpdateView(UpdateView):
+    form_class = PatientForm
+    # template_name = 'accounts/register_patient.html'
+    # success_url = reverse_lazy('patient')
+    #
+    # def get_object(self):
+    #     id_ = self.request.user
+    #
+    #     return get_object_or_404(Patient, id=id_)
+    #
+    # def form_valid(self, form):
+    #     print(form.cleaned_data)
+    #     return super().form_valid(form)
 
 
 #  ######  ######  ######  ######  ######  ######            DELETE VIEWS          ######  ######  ######  ######  ######

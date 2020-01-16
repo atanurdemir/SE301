@@ -3,7 +3,7 @@ from django.contrib.auth import (
     authenticate,
     get_user_model
 )
-from accounts.models import Hospitals, Doctor, Comments, Departments, Prescription
+from accounts.models import Hospitals, Doctor, Comments, Departments, Prescription, Patient
 from django.urls import reverse_lazy
 
 User = get_user_model()
@@ -104,6 +104,18 @@ class HospitalsForm(forms.ModelForm):
             'numRooms'
         ]
 
+class PatientForm(forms.ModelForm):
+    class Meta:
+        model = Patient
+        fields = [
+            'name',
+            'gsm',
+            'address',
+            'email',
+            'age',
+            'gender'
+
+        ]
 
 class DoctorForm(forms.ModelForm):
     email2 = forms.EmailField()
@@ -154,3 +166,12 @@ class SendPrescriptionForm(forms.ModelForm):
             'recipe'
         ]
         success_url = reverse_lazy('git_presc:index')
+
+class DepartmentForm(forms.ModelForm):
+    class Meta:
+        model = Departments
+        fields = [
+
+            'name',
+            'hospital'
+        ]

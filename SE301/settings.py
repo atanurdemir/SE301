@@ -89,7 +89,7 @@ WSGI_APPLICATION = 'SE301.wsgi.application'
 DATABASES = {
         'default':
                  {'ENGINE': 'django.db.backends.mysql',
-                  'NAME': 'django1',
+                  'NAME': 'django',
                   'USER': 'root',
                   'PASSWORD': '',
                   'HOST': 'localhost',

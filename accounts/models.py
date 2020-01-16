@@ -40,6 +40,8 @@ class Hospitals(models.Model):
     numBeds = models.CharField(max_length=5)
     numRooms = models.CharField(max_length=5)
 
+    class Meta:
+        unique_together = ('name', 'district')
     def __str__(self):
         return self.name
 
@@ -126,6 +128,6 @@ class Slot(models.Model):
     slot8 = models.BooleanField(default=False)
 
 class Prescription(models.Model):
-    patientName = models.ForeignKey(Patient, on_delete=models.CASCADE)
+    patientName = models.ForeignKey(Patient, on_delete=models.CASCADE, blank=True)
     diagnosis = models.CharField(max_length=50)
     recipe = models.TextField()

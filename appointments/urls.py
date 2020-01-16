@@ -2,7 +2,7 @@ from django.conf.urls import url
 from . import views
 from django.urls import path
 from .views import list_of_appointments, list_of_patients, add_appointment, list_of_doctors, list_of_viewAppointments, \
-    list_of_searchPatients, list_of_messages, list_of_hospitals, list_of_recipes, AppointmentHistory
+    list_of_searchPatients, list_of_messages, list_of_hospitals,  AppointmentHistory, list_of_recipes
 app_name = 'appointments'
 
 urlpatterns = [
