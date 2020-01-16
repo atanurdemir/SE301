@@ -3,7 +3,12 @@ from django.contrib.auth import (
     authenticate,
     get_user_model
 )
+<<<<<<< HEAD
 from accounts.models import  Doctor, Comments, Departments, Hospitals
+=======
+from accounts.models import Hospitals, Doctor, Comments, Departments
+# Prescription
+>>>>>>> parent of 22be4fc... registered
 from django.urls import reverse_lazy
 
 User = get_user_model()
@@ -56,13 +61,26 @@ class UserRegisterForm(forms.ModelForm):
 
 from django.contrib.auth.forms import UserCreationForm
 
+<<<<<<< HEAD
+=======
+from django.contrib.auth.forms import UserCreationForm
+from django.forms import ModelChoiceField
+
+class MyModelChoiceField(ModelChoiceField):
+  def label_from_instance(self, obj):
+    return "My Object #%i" % obj.id
+>>>>>>> parent of 22be4fc... registered
 
 class UserRegisterForm2(UserCreationForm):
     email = forms.EmailField(label='Email address')
     email2 = forms.EmailField(label='Confirm Email')
+<<<<<<< HEAD
 
 
 
+=======
+    hospital = forms.ModelChoiceField(queryset=Hospitals.objects.all())
+>>>>>>> parent of 22be4fc... registered
 
     class Meta:
         model = User
@@ -71,7 +89,11 @@ class UserRegisterForm2(UserCreationForm):
             'email',
             'email2',
 
+<<<<<<< HEAD
 
+=======
+            'hospital',
+>>>>>>> parent of 22be4fc... registered
 
         ]
 
@@ -86,6 +108,7 @@ class UserRegisterForm2(UserCreationForm):
                 "This email has already been registered")
         return super(UserRegisterForm2, self).clean(*args, **kwargs)
 
+<<<<<<< HEAD
 
 
 
@@ -97,6 +120,8 @@ class UserRegisterForm2(UserCreationForm):
     #   return instance
 
 
+=======
+>>>>>>> parent of 22be4fc... registered
 class UserForgotPasswordForm(forms.Form):
     email = forms.EmailField(label='Email address')
 
@@ -162,4 +187,8 @@ class CommentForm(forms.ModelForm):
 #             'diagnosis',
 #             'recipe'
 #         ]
+<<<<<<< HEAD
 #         success_url = reverse_lazy('git_presc:index')
+=======
+#         success_url = reverse_lazy('git_presc:index')
+>>>>>>> parent of 22be4fc... registered

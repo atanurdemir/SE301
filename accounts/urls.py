@@ -3,13 +3,23 @@ from django.urls import path
 from . import views
 
 from accounts.views import list_of_patients,\
+<<<<<<< HEAD
+=======
+    HospitalCreateView,\
+>>>>>>> parent of 22be4fc... registered
     DoctorCreateView,\
     DoctorDetailView,\
     DoctorUpdateView,\
     DoctorDeleteView,\
+<<<<<<< HEAD
     CommentCreateView, \
     HospitalCreateView, HospitalUpdateView, HospitalDeleteView
 
+=======
+    CommentCreateView,\
+    HospitalUpdateView, \
+    HospitalDeleteView
+>>>>>>> parent of 22be4fc... registered
 
 appname = 'accounts'
 urlpatterns = [

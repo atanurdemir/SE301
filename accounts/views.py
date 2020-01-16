@@ -1,7 +1,11 @@
 from django.conf import settings
 from django.shortcuts import render, redirect
 from django.contrib.auth import (authenticate, get_user_model, login, logout)
+<<<<<<< HEAD
 from .forms import UserLoginForm, UserRegisterForm, UserForgotPasswordForm,  DoctorForm, CommentForm,UserRegisterForm2, HospitalsForm
+=======
+from .forms import UserLoginForm, UserRegisterForm, UserForgotPasswordForm, HospitalsForm, DoctorForm, CommentForm,UserRegisterForm2
+>>>>>>> parent of 22be4fc... registered
     # SendPrescriptionForm
 from django.contrib.auth.decorators import login_required
 from django.http import request
@@ -11,7 +15,10 @@ from django.urls import reverse, reverse_lazy
 from appointments.models import Patient
 from .models import Doctor, Comments, Hospitals
 # Prescription
+<<<<<<< HEAD
 from django.http import HttpResponseRedirect
+=======
+>>>>>>> parent of 22be4fc... registered
 from django.views.generic import ListView, UpdateView, DeleteView, CreateView, DetailView
 from appointments.models import Appointment
 from django.contrib.messages.views import SuccessMessageMixin
@@ -114,9 +121,14 @@ class HospitalCreateView(SuccessMessageMixin, CreateView):
 
 
 class CommentCreateView(SuccessMessageMixin,CreateView):
+<<<<<<< HEAD
     model = Comments
     fields = ("doctor","message")
     success_url = reverse_lazy('patient')
+=======
+    form_class = CommentForm
+    queryset = Comments.objects.all()
+>>>>>>> parent of 22be4fc... registered
     template_name = 'accounts/comment_create.html'
     # def form_valid(self, form):
     #     print(form.cleaned_data)
@@ -210,7 +222,11 @@ class DoctorDeleteView(DeleteView):
     def get_object(self):
         id_=self.kwargs.get("id")
         return get_object_or_404(Doctor, id=id_)
+<<<<<<< HEAD
 #
+=======
+
+>>>>>>> parent of 22be4fc... registered
 class HospitalDeleteView(DeleteView):
     template_name = 'accounts/delete_hospital.html'
     queryset = Hospitals.objects.all()

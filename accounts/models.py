@@ -125,7 +125,14 @@ class Slot(models.Model):
     slot7 = models.BooleanField(default=False)
     slot8 = models.BooleanField(default=False)
 #
+<<<<<<< HEAD
 class Prescription(models.Model):
     patientName = models.ForeignKey(Patient, on_delete=models.CASCADE)
     diagnosis = models.CharField(max_length=50)
     recipe = models.TextField()
+=======
+# class Prescription(models.Model):
+#     patientName = models.CharField(max_length=50)
+#     diagnosis = models.CharField(max_length=50)
+#     recipe = models.TextField()
+>>>>>>> parent of 22be4fc... registered

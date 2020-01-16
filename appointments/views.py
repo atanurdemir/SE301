@@ -58,9 +58,15 @@ class list_of_messages(ListView):
         model = Comments
         template_name = 'appointments/check_messages.html'
 
+<<<<<<< HEAD
 #
 # class list_of_recipes(ListView):
 #     model = Prescription
+=======
+
+# class list_of_recipes(ListView):
+#     model = Prescriptions
+>>>>>>> parent of 22be4fc... registered
 #     template_name = 'appointments/list_prescriptions.html'
 
 ##APPOINTMENT SAVING TO DATABASE
