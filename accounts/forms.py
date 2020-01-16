@@ -3,8 +3,7 @@ from django.contrib.auth import (
     authenticate,
     get_user_model
 )
-from accounts.models import Hospitals, Doctor, Comments, Departments
-# Prescription
+from accounts.models import  Doctor, Comments, Departments, Hospitals
 from django.urls import reverse_lazy
 
 User = get_user_model()
@@ -59,9 +58,7 @@ from django.contrib.auth.forms import UserCreationForm
 class UserRegisterForm2(UserCreationForm):
     email = forms.EmailField(label='Email address')
     email2 = forms.EmailField(label='Confirm Email')
-    hospital = forms.ChoiceField(
-        choices=[(x.id,x.name) for x in Hospitals.objects.all()]
-         )
+
 
 
 
@@ -72,7 +69,7 @@ class UserRegisterForm2(UserCreationForm):
             'email',
             'email2',
 
-            'hospital',
+
 
         ]
 

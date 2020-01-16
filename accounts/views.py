@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.shortcuts import render, redirect
 from django.contrib.auth import (authenticate, get_user_model, login, logout)
-from .forms import UserLoginForm, UserRegisterForm, UserForgotPasswordForm, HospitalsForm, DoctorForm, CommentForm,UserRegisterForm2
+from .forms import UserLoginForm, UserRegisterForm, UserForgotPasswordForm,  DoctorForm, CommentForm,UserRegisterForm2, HospitalsForm
     # SendPrescriptionForm
 from django.contrib.auth.decorators import login_required
 from django.http import request
@@ -181,7 +181,7 @@ class DoctorUpdateView(SuccessMessageMixin,UpdateView):
         print(form.cleaned_data)
         return super().form_valid(form)
 
-
+#
 class HospitalUpdateView(UpdateView):
     form_class = HospitalsForm
     queryset = Hospitals.objects.all()
@@ -202,7 +202,7 @@ class DoctorDeleteView(DeleteView):
     def get_object(self):
         id_=self.kwargs.get("id")
         return get_object_or_404(Doctor, id=id_)
-
+#
 class HospitalDeleteView(DeleteView):
     template_name = 'accounts/delete_hospital.html'
     queryset = Hospitals.objects.all()

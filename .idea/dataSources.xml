@@ -9,5 +9,14 @@
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
       <jdbc-url>jdbc:sqlite:D:\Documents\PycharmProjects\SE301\db.sqlite3</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="db" uuid="67dec959-d999-47e4-824f-bdd030a9d81c">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\tahad\Documents\GitHub\SE301\db.sqlite3</jdbc-url>
+      <driver-properties>
+        <property name="enable_load_extension" value="true" />
+      </driver-properties>
+    </data-source>
   </component>
 </project>

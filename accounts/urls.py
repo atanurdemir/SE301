@@ -3,14 +3,13 @@ from django.urls import path
 from . import views
 
 from accounts.views import list_of_patients,\
-    HospitalCreateView,\
     DoctorCreateView,\
     DoctorDetailView,\
     DoctorUpdateView,\
     DoctorDeleteView,\
-    CommentCreateView,\
-    HospitalUpdateView, \
-    HospitalDeleteView
+    CommentCreateView, \
+    HospitalCreateView, HospitalUpdateView, HospitalDeleteView
+
 
 appname = 'accounts'
 urlpatterns = [
@@ -20,7 +19,7 @@ urlpatterns = [
     # url(r'^$', list_of_patients.as_view(), name="patientList"),
     url(r'itemget/$', views.itemget, {'template_name': 'doctorPage.html'}, name='itemget'),
 
-    url(r'registerHospital/$',HospitalCreateView.as_view(), name = 'register_hospital'),
+     url(r'registerHospital/$',HospitalCreateView.as_view(), name = 'register_hospital'),
     url(r'registerDoctor/$', DoctorCreateView.as_view(), name="register_doctor"),
     url(r'commentCreate/$', CommentCreateView.as_view(), name="comment_create"),
     # url(r'^sendPrescription/$', SendPrescriptionView.as_view(), name="send_prescription"),
