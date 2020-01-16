@@ -145,8 +145,6 @@ class CommentForm(forms.ModelForm):
 
 
 class SendPrescriptionForm(forms.ModelForm):
-    presc = Prescription.objects.order_by('id').last()
-
     class Meta:
         model = Prescription
         fields = [

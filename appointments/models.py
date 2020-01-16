@@ -23,6 +23,7 @@ from accounts.models import *
 
 class Appointment(models.Model):
     Date = models.DateField()
+    Time = models.TimeField()
     user = models.ForeignKey(User, on_delete=models.CASCADE, default="")
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
     district = models.ForeignKey(District, on_delete=models.CASCADE)

@@ -7,7 +7,7 @@ from accounts.models import User
 class AppointmentForm(ModelForm):
     class Meta:
         model = Appointment
-        fields = ("user","Date", "province", "district", "hospital", "clinic", "doctor")
+        fields = ("user","Date", "Time", "province", "district", "hospital", "clinic", "doctor")
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
