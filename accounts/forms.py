@@ -3,7 +3,7 @@ from django.contrib.auth import (
     authenticate,
     get_user_model
 )
-from accounts.models import  Doctor, Comments, Departments, Hospitals
+from accounts.models import Hospitals, Doctor, Comments, Departments, Prescription
 from django.urls import reverse_lazy
 
 User = get_user_model()
@@ -54,15 +54,11 @@ class UserRegisterForm(forms.ModelForm):
                 "This email has already been registered")
         return super(UserRegisterForm, self).clean(*args, **kwargs)
 
-from django.contrib.auth.forms import UserCreationForm
 
-
-class UserRegisterForm2(UserCreationForm):
+class UserRegisterForm2(forms.ModelForm):
     email = forms.EmailField(label='Email address')
     email2 = forms.EmailField(label='Confirm Email')
-
-
-
+    password = forms.CharField(widget=forms.PasswordInput)
 
     class Meta:
         model = User
@@ -70,8 +66,7 @@ class UserRegisterForm2(UserCreationForm):
             'username',
             'email',
             'email2',
-
-
+            'password',
 
         ]
 
@@ -86,17 +81,6 @@ class UserRegisterForm2(UserCreationForm):
                 "This email has already been registered")
         return super(UserRegisterForm2, self).clean(*args, **kwargs)
 
-
-
-
-    # def save(self, commit=True):
-    #   instance = super().save(commit=False)
-    #   pk = self.cleaned_data['hospital']
-    #   instance.hospital = Hospitals.objects.get(pk=pk)
-    #   instance.save(commit)
-    #   return instance
-
-
 class UserForgotPasswordForm(forms.Form):
     email = forms.EmailField(label='Email address')
 
@@ -107,20 +91,23 @@ class UserForgotPasswordForm(forms.Form):
             raise forms.ValidationError("This email is not registered")
         return super(UserForgotPasswordForm, self).clean(*args, **kwargs)
 
+
 class HospitalsForm(forms.ModelForm):
     class Meta:
         model = Hospitals
-        fields=[
+        fields = [
             'name',
             'province',
             'district',
             'phone',
             'numBeds',
             'numRooms'
-            ]
+        ]
+
 
 class DoctorForm(forms.ModelForm):
     email2 = forms.EmailField()
+
     class Meta:
         model = Doctor
         fields = [
@@ -131,8 +118,9 @@ class DoctorForm(forms.ModelForm):
             'gsm',
             'address',
             'department',
-            'hospital'
+            'hospital',
         ]
+
     def clean(self, *args, **kwargs):
         email = self.cleaned_data.get('email')
         email2 = self.cleaned_data.get('email2')
@@ -144,6 +132,7 @@ class DoctorForm(forms.ModelForm):
                 "This email has already been registered")
         return super(DoctorForm, self).clean(*args, **kwargs)
 
+
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comments
@@ -153,13 +142,15 @@ class CommentForm(forms.ModelForm):
             'message'
         ]
 
-# class SendPrescriptionForm(forms.ModelForm):
-#     presc = Prescription.objects.order_by('id').last()
-#     class Meta:
-#         model = Prescription
-#         fields = [
-#             'patientName',
-#             'diagnosis',
-#             'recipe'
-#         ]
-#         success_url = reverse_lazy('git_presc:index')
+
+class SendPrescriptionForm(forms.ModelForm):
+    presc = Prescription.objects.order_by('id').last()
+
+    class Meta:
+        model = Prescription
+        fields = [
+            'patientName',
+            'diagnosis',
+            'recipe'
+        ]
+        success_url = reverse_lazy('git_presc:index')
