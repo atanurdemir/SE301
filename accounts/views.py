@@ -27,7 +27,7 @@ def login_view(request):
         user_groups = list(request.user.groups.values_list('name', flat=True))
         if 'doctor' in user_groups:
             return redirect(reverse('doctor'))
-        else:
+        if 'patient' in user_groups:
             return redirect(reverse('patient'))
     context = {
         'form': form,
@@ -43,7 +43,7 @@ def register_view(request):
         password = form.cleaned_data.get('password')
         user.set_password(password)
         user.save()
-        group = Group.objects.get(name='Doctor')
+        group = Group.objects.get(name='doctor')
         user.groups.add(group)
         if next:
             return redirect(next)
@@ -63,7 +63,7 @@ def register_view2(request):
         password = form.cleaned_data.get('password')
         user.set_password(password)
         user.save()
-        group = Group.objects.get(name='Patient')
+        group = Group.objects.get(name='patient')
         user.groups.add(group)
 
 

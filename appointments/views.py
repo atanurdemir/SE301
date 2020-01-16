@@ -113,7 +113,7 @@ from django.utils.decorators import method_decorator
 
 class AppointmentHistory(ListView):
     context_object_name = 'appointment_history'
-    template_name = 'appointment_history.html'
+    template_name = 'appointments/appointment_history.html'
 
 
     def dispatch(self, *args, **kwargs):

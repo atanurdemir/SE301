@@ -28,6 +28,7 @@
         <input class="form-control" id="myInput" type="text" placeholder="Search patient...">
         <thead>
         <tr>
+            <th scope="col">Username</th>
             <th scope="col">Name</th>
             <th scope="col">Age</th>
             <th scope="col">GSM</th>
@@ -41,6 +42,7 @@
 
 
             <tr>
+                <td scope="row">{{ patient.user.username }}</td>
                 <td scope="row">{{ patient.name }}</td>
                 <td scope="row">{{ patient.age }}</td>
                 <td scope="row">{{ patient.gsm }}</td>

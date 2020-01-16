@@ -118,15 +118,11 @@ class PatientForm(forms.ModelForm):
         ]
 
 class DoctorForm(forms.ModelForm):
-    email2 = forms.EmailField()
-
     class Meta:
         model = Doctor
         fields = [
             'name',
             'title',
-            'email',
-            'email2',
             'gsm',
             'address',
             'department',
