@@ -31,6 +31,7 @@ class Appointment(models.Model):
     hospital = models.ForeignKey(Hospitals, on_delete=models.CASCADE)
 
 
+
     def __str__(self):
        return f'{self.user}{self.doctor}{self.Date}{self.time}'
 

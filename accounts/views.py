@@ -8,6 +8,7 @@ from django.shortcuts import redirect
 from django.contrib.auth.models import Group
 from django.urls import reverse, reverse_lazy
 from appointments.models import Patient
+from django.http import HttpResponseRedirect
 from .models import Doctor, Comments, Hospitals, Prescription
 from django.views.generic import ListView, UpdateView, DeleteView, CreateView, DetailView
 from appointments.models import Appointment
@@ -59,11 +60,12 @@ def register_view2(request):
     if form.is_valid():
         user = form.save(commit=False)
         password = form.cleaned_data.get('password')
-
         user.set_password(password)
         user.save()
         group = Group.objects.get(name='Patient')
         user.groups.add(group)
+
+
         if next:
             return redirect(next)
         return redirect('login')
@@ -110,17 +112,23 @@ class HospitalCreateView(SuccessMessageMixin, CreateView):
     success_message = "Hospital %(name) saved successfully."
 
 
-class CommentCreateView(SuccessMessageMixin, CreateView):
-    form_class = CommentForm
-    queryset = Comments.objects.all()
+class CommentCreateView(SuccessMessageMixin,CreateView):
+    model = Comments
+    fields = ("doctor","message")
+    success_url = reverse_lazy('patient')
     template_name = 'accounts/comment_create.html'
-    success_url = reverse_lazy('comment_create')
-    success_message = "Comment sent successfully!"
+    # def form_valid(self, form):
+    #     print(form.cleaned_data)
+    #     return super().form_valid(form)
+
+    def user(request):
+        Comments.patient = request.user
 
     def form_valid(self, form):
-        print(form.cleaned_data)
-        return super().form_valid(form)
-
+        self.object = form.save(commit=False)
+        self.object.user = self.request.user
+        self.object.save()
+        return HttpResponseRedirect(self.get_success_url())
 
 class SendPrescriptionView(SuccessMessageMixin, CreateView):
     form_class = SendPrescriptionForm
@@ -183,7 +191,7 @@ class DoctorUpdateView(SuccessMessageMixin, UpdateView):
         print(form.cleaned_data)
         return super().form_valid(form)
 
-
+#
 class HospitalUpdateView(UpdateView):
     form_class = HospitalsForm
     queryset = Hospitals.objects.all()
@@ -208,8 +216,7 @@ class DoctorDeleteView(DeleteView):
     def get_object(self):
         id_ = self.kwargs.get("id")
         return get_object_or_404(Doctor, id=id_)
-
-
+      
 class HospitalDeleteView(DeleteView):
     template_name = 'accounts/delete_hospital.html'
     queryset = Hospitals.objects.all()

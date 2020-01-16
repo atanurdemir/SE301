@@ -81,7 +81,6 @@ class UserRegisterForm2(forms.ModelForm):
                 "This email has already been registered")
         return super(UserRegisterForm2, self).clean(*args, **kwargs)
 
-
 class UserForgotPasswordForm(forms.Form):
     email = forms.EmailField(label='Email address')
 
@@ -138,7 +137,7 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model = Comments
         fields = [
-            'patient',
+
             'doctor',
             'message'
         ]
