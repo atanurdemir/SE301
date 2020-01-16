@@ -44,8 +44,6 @@ class Hospitals(models.Model):
         return self.name
 
 
-
-
 class Departments(models.Model):
     name = models.CharField(max_length=80)
     hospital = models.ForeignKey(Hospitals, on_delete=models.CASCADE)
@@ -57,13 +55,13 @@ class Departments(models.Model):
 class Doctor(models.Model):
     # ID , gsm, address, e-mail, title
     user = models.OneToOneField(User, on_delete=models.CASCADE, default="")
-    name = models.CharField(max_length=50, default='isim')
+    name = models.CharField(max_length=50, default='')
     gsm = models.CharField(max_length=11)
     address = models.CharField(max_length=200)
     email = models.EmailField()
     title = models.CharField(max_length=20)
     department = models.CharField(max_length=100)
-    hospital = models.CharField(max_length=100)
+    hospital = models.ForeignKey(Hospitals, on_delete=models.CASCADE, blank=True, null=True)
 
     @receiver(post_save, sender=User)
     def create_user_profile(sender, instance, created, **kwargs):
@@ -76,13 +74,13 @@ class Doctor(models.Model):
 
     def __str__(self):
         return f'{self.name}'
+
     def get_absolute_url(self):
         return reverse("")
 
 
-
 class Patient(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, default="", editable=False)
     tckno = models.CharField(max_length=12, default="tck")
     name = models.CharField(max_length=50)
     gsm = models.CharField(max_length=11)
@@ -103,15 +101,17 @@ class Patient(models.Model):
     def save_user_profile(sender, instance, **kwargs):
         instance.patient.save()
 
+
 class Comments(models.Model):
-    doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
-    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
+    doctor = models.CharField(max_length=240)
+    patient = models.CharField(max_length=240)
     message = models.TextField()
 
 
 class Day(models.Model):
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
     date = models.DateField()
+
 
 class Slot(models.Model):
     day = models.ForeignKey(Day, on_delete=models.CASCADE)
@@ -124,15 +124,9 @@ class Slot(models.Model):
     slot6 = models.BooleanField(default=False)
     slot7 = models.BooleanField(default=False)
     slot8 = models.BooleanField(default=False)
-#
-<<<<<<< HEAD
+
+
 class Prescription(models.Model):
-    patientName = models.ForeignKey(Patient, on_delete=models.CASCADE)
+    patientName = models.CharField(max_length=50)
     diagnosis = models.CharField(max_length=50)
     recipe = models.TextField()
-=======
-# class Prescription(models.Model):
-#     patientName = models.CharField(max_length=50)
-#     diagnosis = models.CharField(max_length=50)
-#     recipe = models.TextField()
->>>>>>> parent of 22be4fc... registered

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Appointment, Patient, Doctor, Comments, Hospitals
+from .models import Appointment, Patient, Doctor, Comments, Hospitals, Prescription
 from django.http import HttpResponse, HttpResponseRedirect
 from .forms import AppointmentForm
 from django.views.generic import ListView, CreateView, DeleteView, UpdateView
@@ -58,16 +58,10 @@ class list_of_messages(ListView):
         model = Comments
         template_name = 'appointments/check_messages.html'
 
-<<<<<<< HEAD
-#
-# class list_of_recipes(ListView):
-#     model = Prescription
-=======
 
-# class list_of_recipes(ListView):
-#     model = Prescriptions
->>>>>>> parent of 22be4fc... registered
-#     template_name = 'appointments/list_prescriptions.html'
+class list_of_recipes(ListView):
+    model = Prescription
+    template_name = 'appointments/list_prescriptions.html'
 
 ##APPOINTMENT SAVING TO DATABASE
 
@@ -115,16 +109,3 @@ def load_districts(request):
     province_id = request.GET.get('province')
     districts = District.objects.filter(province_id=province_id).order_by('name')
     return render(request, 'appointments/district_dropdown_list_options.html', {'districts': districts})
-
-from django.utils.decorators import method_decorator
-
-class AppointmentHistory(ListView):
-    context_object_name = 'appointment_history'
-    template_name = 'appointment_history.html'
-
-
-    def dispatch(self, *args, **kwargs):
-        return super(AppointmentHistory, self).dispatch(*args, **kwargs)
-
-    def get_queryset(self):
-        return Appointment.objects.filter(user=self.request.user)
