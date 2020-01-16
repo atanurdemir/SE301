@@ -63,7 +63,7 @@ class Doctor(models.Model):
     email = models.EmailField()
     title = models.CharField(max_length=20)
     department = models.CharField(max_length=100)
-    hospital = models.ForeignKey(Hospitals, on_delete=models.CASCADE)
+    hospital = models.ForeignKey(Hospitals, on_delete=models.CASCADE, blank=True, null=True)
 
     @receiver(post_save, sender=User)
     def create_user_profile(sender, instance, created, **kwargs):
@@ -101,6 +101,7 @@ class Patient(models.Model):
     @receiver(post_save, sender=User)
     def save_user_profile(sender, instance, **kwargs):
         instance.patient.save()
+
 class Comments(models.Model):
     doctor = models.CharField(max_length=240)
     patient = models.CharField(max_length=240)
