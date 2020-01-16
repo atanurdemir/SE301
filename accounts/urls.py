@@ -2,15 +2,16 @@ from django.conf.urls import url
 from django.urls import path
 from . import views
 
-from accounts.views import list_of_patients,\
-    HospitalCreateView,\
-    DoctorCreateView,\
-    DoctorDetailView,\
-    DoctorUpdateView,\
-    DoctorDeleteView,\
-    CommentCreateView,\
+from accounts.views import list_of_patients, \
+    HospitalCreateView, \
+    DoctorCreateView, \
+    DoctorDetailView, \
+    DoctorUpdateView, \
+    DoctorDeleteView, \
+    CommentCreateView, \
     HospitalUpdateView, \
-    HospitalDeleteView
+    HospitalDeleteView, \
+    SendPrescriptionView
 
 appname = 'accounts'
 urlpatterns = [
@@ -20,10 +21,10 @@ urlpatterns = [
     # url(r'^$', list_of_patients.as_view(), name="patientList"),
     url(r'itemget/$', views.itemget, {'template_name': 'doctorPage.html'}, name='itemget'),
 
-    url(r'registerHospital/$',HospitalCreateView.as_view(), name = 'register_hospital'),
+    url(r'registerHospital/$', HospitalCreateView.as_view(), name='register_hospital'),
     url(r'registerDoctor/$', DoctorCreateView.as_view(), name="register_doctor"),
     url(r'commentCreate/$', CommentCreateView.as_view(), name="comment_create"),
-    # url(r'^sendPrescription/$', SendPrescriptionView.as_view(), name="send_prescription"),
+    url(r'^sendPrescription/$', SendPrescriptionView.as_view(), name="send_prescription"),
     path('<int:id>/', DoctorDetailView.as_view(), name="doctor_detail"),
     path('<int:id>/edit/', DoctorUpdateView.as_view(), name='doctor_edit'),
     path('<int:id>/delete/', DoctorDeleteView.as_view(), name='doctor_delete'),

@@ -3,8 +3,7 @@ from django.contrib.auth import (
     authenticate,
     get_user_model
 )
-from accounts.models import Hospitals, Doctor, Comments, Departments
-# Prescription
+from accounts.models import Hospitals, Doctor, Comments, Departments, Prescription
 from django.urls import reverse_lazy
 
 User = get_user_model()
@@ -56,17 +55,10 @@ class UserRegisterForm(forms.ModelForm):
         return super(UserRegisterForm, self).clean(*args, **kwargs)
 
 
-from django.contrib.auth.forms import UserCreationForm
-from django.forms import ModelChoiceField
-
-class MyModelChoiceField(ModelChoiceField):
-  def label_from_instance(self, obj):
-    return "My Object #%i" % obj.id
-
-class UserRegisterForm2(UserCreationForm):
+class UserRegisterForm2(forms.ModelForm):
     email = forms.EmailField(label='Email address')
     email2 = forms.EmailField(label='Confirm Email')
-    hospital = forms.ModelChoiceField(queryset=Hospitals.objects.all())
+    password = forms.CharField(widget=forms.PasswordInput)
 
     class Meta:
         model = User
@@ -74,8 +66,7 @@ class UserRegisterForm2(UserCreationForm):
             'username',
             'email',
             'email2',
-
-            'hospital',
+            'password',
 
         ]
 
@@ -89,6 +80,7 @@ class UserRegisterForm2(UserCreationForm):
             raise forms.ValidationError(
                 "This email has already been registered")
         return super(UserRegisterForm2, self).clean(*args, **kwargs)
+
 
 class UserForgotPasswordForm(forms.Form):
     email = forms.EmailField(label='Email address')
@@ -127,7 +119,7 @@ class DoctorForm(forms.ModelForm):
             'gsm',
             'address',
             'department',
-            'hospital'
+            'hospital',
         ]
 
     def clean(self, *args, **kwargs):
@@ -151,13 +143,15 @@ class CommentForm(forms.ModelForm):
             'message'
         ]
 
-# class SendPrescriptionForm(forms.ModelForm):
-#     presc = Prescription.objects.order_by('id').last()
-#     class Meta:
-#         model = Prescription
-#         fields = [
-#             'patientName',
-#             'diagnosis',
-#             'recipe'
-#         ]
-#         success_url = reverse_lazy('git_presc:index')
+
+class SendPrescriptionForm(forms.ModelForm):
+    presc = Prescription.objects.order_by('id').last()
+
+    class Meta:
+        model = Prescription
+        fields = [
+            'patientName',
+            'diagnosis',
+            'recipe'
+        ]
+        success_url = reverse_lazy('git_presc:index')
