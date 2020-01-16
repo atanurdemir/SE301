@@ -55,6 +55,8 @@ class UserRegisterForm(forms.ModelForm):
         return super(UserRegisterForm, self).clean(*args, **kwargs)
 
 from django.contrib.auth.forms import UserCreationForm
+
+
 class UserRegisterForm2(UserCreationForm):
     email = forms.EmailField(label='Email address')
     email2 = forms.EmailField(label='Confirm Email')
@@ -84,17 +86,15 @@ class UserRegisterForm2(UserCreationForm):
                 "This email has already been registered")
         return super(UserRegisterForm2, self).clean(*args, **kwargs)
 
-    def formfield_for_foreignkey(self, db_field, request, **kwargs):
-        if db_field.name == 'hospital':
-          return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
 
-    def save(self, commit=True):
-      instance = super().save(commit=False)
-      pk = self.cleaned_data['hospital']
-      instance.hospital = Hospitals.objects.get(pk=pk)
-      instance.save(commit)
-      return instance
+
+    # def save(self, commit=True):
+    #   instance = super().save(commit=False)
+    #   pk = self.cleaned_data['hospital']
+    #   instance.hospital = Hospitals.objects.get(pk=pk)
+    #   instance.save(commit)
+    #   return instance
 
 
 class UserForgotPasswordForm(forms.Form):
@@ -148,7 +148,7 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model = Comments
         fields = [
-            'patient',
+
             'doctor',
             'message'
         ]

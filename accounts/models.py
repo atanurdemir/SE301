@@ -63,7 +63,7 @@ class Doctor(models.Model):
     email = models.EmailField()
     title = models.CharField(max_length=20)
     department = models.CharField(max_length=100)
-    hospital = models.ForeignKey(Hospitals, on_delete=models.CASCADE)
+    hospital = models.CharField(max_length=100)
 
     @receiver(post_save, sender=User)
     def create_user_profile(sender, instance, created, **kwargs):
@@ -80,8 +80,9 @@ class Doctor(models.Model):
         return reverse("")
 
 
+
 class Patient(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, default="", editable=False)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     tckno = models.CharField(max_length=12, default="tck")
     name = models.CharField(max_length=50)
     gsm = models.CharField(max_length=11)
@@ -101,9 +102,10 @@ class Patient(models.Model):
     @receiver(post_save, sender=User)
     def save_user_profile(sender, instance, **kwargs):
         instance.patient.save()
+
 class Comments(models.Model):
-    doctor = models.CharField(max_length=240)
-    patient = models.CharField(max_length=240)
+    doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
+    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     message = models.TextField()
 
 
