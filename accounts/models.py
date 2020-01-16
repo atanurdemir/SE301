@@ -79,9 +79,8 @@ class Doctor(models.Model):
         return reverse("")
 
 
-
 class Patient(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, default="", editable=False)
     tckno = models.CharField(max_length=12, default="tck")
     name = models.CharField(max_length=50)
     gsm = models.CharField(max_length=11)
@@ -101,6 +100,7 @@ class Patient(models.Model):
     @receiver(post_save, sender=User)
     def save_user_profile(sender, instance, **kwargs):
         instance.patient.save()
+
 
 class Comments(models.Model):
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
@@ -124,6 +124,7 @@ class Slot(models.Model):
     slot6 = models.BooleanField(default=False)
     slot7 = models.BooleanField(default=False)
     slot8 = models.BooleanField(default=False)
+
 
 class Prescription(models.Model):
     patientName = models.ForeignKey(Patient, on_delete=models.CASCADE)

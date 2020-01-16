@@ -1,6 +1,6 @@
 from django.forms import ModelForm
 from .models import Appointment
-from accounts.models import District, Departments, Doctor
+from accounts.models import District, Hospitals, Departments, Doctor
 from django.http import request
 from accounts.models import User
 
