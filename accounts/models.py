@@ -127,6 +127,6 @@ class Slot(models.Model):
 
 
 class Prescription(models.Model):
-    patientName = models.CharField(max_length=50)
+    patientName = models.ForeignKey(Patient, on_delete=models.CASCADE)
     diagnosis = models.CharField(max_length=50)
     recipe = models.TextField()
