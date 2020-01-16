@@ -44,6 +44,8 @@ class Hospitals(models.Model):
         return self.name
 
 
+
+
 class Departments(models.Model):
     name = models.CharField(max_length=80)
     hospital = models.ForeignKey(Hospitals, on_delete=models.CASCADE)
@@ -55,13 +57,13 @@ class Departments(models.Model):
 class Doctor(models.Model):
     # ID , gsm, address, e-mail, title
     user = models.OneToOneField(User, on_delete=models.CASCADE, default="")
-    name = models.CharField(max_length=50, default='')
+    name = models.CharField(max_length=50, default='isim')
     gsm = models.CharField(max_length=11)
     address = models.CharField(max_length=200)
     email = models.EmailField()
     title = models.CharField(max_length=20)
     department = models.CharField(max_length=100)
-    hospital = models.ForeignKey(Hospitals, on_delete=models.CASCADE, blank=True, null=True)
+    hospital = models.CharField(max_length=100)
 
     @receiver(post_save, sender=User)
     def create_user_profile(sender, instance, created, **kwargs):
@@ -74,7 +76,6 @@ class Doctor(models.Model):
 
     def __str__(self):
         return f'{self.name}'
-
     def get_absolute_url(self):
         return reverse("")
 
@@ -112,7 +113,6 @@ class Day(models.Model):
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
     date = models.DateField()
 
-
 class Slot(models.Model):
     day = models.ForeignKey(Day, on_delete=models.CASCADE)
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
@@ -124,7 +124,7 @@ class Slot(models.Model):
     slot6 = models.BooleanField(default=False)
     slot7 = models.BooleanField(default=False)
     slot8 = models.BooleanField(default=False)
-
+#
 class Prescription(models.Model):
     patientName = models.ForeignKey(Patient, on_delete=models.CASCADE)
     diagnosis = models.CharField(max_length=50)
