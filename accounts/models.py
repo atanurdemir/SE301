@@ -103,8 +103,8 @@ class Patient(models.Model):
 
 
 class Comments(models.Model):
-    doctor = models.CharField(max_length=240)
-    patient = models.CharField(max_length=240)
+    doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
+    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
     message = models.TextField()
 
 

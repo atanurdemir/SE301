@@ -12,6 +12,7 @@ from .models import Doctor, Comments, Hospitals, Prescription
 from django.views.generic import ListView, UpdateView, DeleteView, CreateView, DetailView
 from appointments.models import Appointment
 from django.contrib.messages.views import SuccessMessageMixin
+from django.http import HttpResponseRedirect
 
 
 def login_view(request):
@@ -111,15 +112,19 @@ class HospitalCreateView(SuccessMessageMixin, CreateView):
 
 
 class CommentCreateView(SuccessMessageMixin, CreateView):
-    form_class = CommentForm
-    queryset = Comments.objects.all()
+    model = Comments
+    fields = ("doctor", "message")
+    success_url = reverse_lazy('patient')
     template_name = 'accounts/comment_create.html'
-    success_url = reverse_lazy('comment_create')
-    success_message = "Comment sent successfully!"
+
+    def user(request):
+        Comments.patient = request.user
 
     def form_valid(self, form):
-        print(form.cleaned_data)
-        return super().form_valid(form)
+        self.object = form.save(commit=False)
+        self.object.user = self.request.user
+        self.object.save()
+        return HttpResponseRedirect(self.get_success_url())
 
 
 class SendPrescriptionView(SuccessMessageMixin, CreateView):

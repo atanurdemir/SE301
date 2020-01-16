@@ -4,6 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from .forms import AppointmentForm
 from django.views.generic import ListView, CreateView, DeleteView, UpdateView
 from django.urls import reverse_lazy
+from django.utils.decorators import method_decorator
 
 # def appointment_list(request):
 #  appointments = Appointment.objects.all().order_by('PatientName');
@@ -109,3 +110,14 @@ def load_districts(request):
     province_id = request.GET.get('province')
     districts = District.objects.filter(province_id=province_id).order_by('name')
     return render(request, 'appointments/district_dropdown_list_options.html', {'districts': districts})
+
+class AppointmentHistory(ListView):
+    context_object_name = 'appointment_history'
+    template_name = 'appointment_history.html'
+
+    def dispatch(self, *args, **kwargs):
+        return super(AppointmentHistory, self).dispatch(*args, **kwargs)
+
+    def get_queryset(self):
+        return Appointment.objects.filter(user=self.request.user)
+
