@@ -23,15 +23,20 @@ from accounts.models import *
 
 class Appointment(models.Model):
     Date = models.DateField()
+    Time = models.TimeField()
     user = models.ForeignKey(User, on_delete=models.CASCADE, default="")
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
     district = models.ForeignKey(District, on_delete=models.CASCADE)
-    province = models.ForeignKey(Province, on_delete=models.CASCADE)
     clinic = models.ForeignKey(Departments, on_delete=models.CASCADE)
     hospital = models.ForeignKey(Hospitals, on_delete=models.CASCADE)
+    province = models.ForeignKey(Province, on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = ('Date', 'Time', 'doctor','district','province','hospital','clinic')
 
 
-
+    def get_absolute_url(self):
+        return reverse("patient")
     def __str__(self):
        return f'{self.user}{self.doctor}{self.Date}{self.time}'
 

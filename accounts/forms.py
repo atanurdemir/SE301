@@ -104,18 +104,7 @@ class HospitalsForm(forms.ModelForm):
             'numRooms'
         ]
 
-class PatientForm(forms.ModelForm):
-    class Meta:
-        model = Patient
-        fields = [
-            'name',
-            'gsm',
-            'address',
-            'email',
-            'age',
-            'gender'
 
-        ]
 
 class DoctorForm(forms.ModelForm):
     class Meta:
@@ -171,3 +160,21 @@ class DepartmentForm(forms.ModelForm):
             'name',
             'hospital'
         ]
+class UserUpdateForm(forms.ModelForm):
+    email = forms.EmailField()
+
+    class Meta:
+        model = User
+        fields = ['username', 'password']
+
+# Profile update form allows users to update image
+class ProfileUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Patient
+        fields = [
+            'name',
+            'gsm',
+            'address',
+            'age',
+            'gender'
+                    ]

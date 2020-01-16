@@ -2,7 +2,7 @@ from django.conf import settings
 from django.shortcuts import render, redirect
 from django.contrib.auth import (authenticate, get_user_model, login, logout)
 from .forms import UserLoginForm, UserRegisterForm, UserForgotPasswordForm, HospitalsForm, DoctorForm, CommentForm, UserRegisterForm2, SendPrescriptionForm,\
-    DepartmentForm, PatientForm
+    DepartmentForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
 from django.http import request
 from django.shortcuts import redirect
@@ -231,8 +231,8 @@ class HospitalUpdateView(UpdateView):
         print(form.cleaned_data)
         return super().form_valid(form)
 
-class PatientUpdateView(UpdateView):
-    form_class = PatientForm
+# class PatientUpdateView(UpdateView):
+#     form_class = PatientForm
     # template_name = 'accounts/register_patient.html'
     # success_url = reverse_lazy('patient')
     #
@@ -264,3 +264,24 @@ class HospitalDeleteView(DeleteView):
     def get_object(self):
         id_ = self.kwargs.get("id")
         return get_object_or_404(Hospitals, id=id_)
+@login_required()
+def profile(request):
+    if request.method == 'POST':
+        user_form = UserUpdateForm(request.POST, instance=request.user)
+        profile_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.patient)
+
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            return redirect('patient')
+
+    else:
+        user_form = UserUpdateForm(instance=request.user)
+        profile_form = ProfileUpdateForm(instance=request.user.patient)
+
+    context = {
+        'u_form': user_form,
+        'p_form': profile_form
+    }
+
+    return render(request, 'accounts/profile.html', context)

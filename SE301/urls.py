@@ -4,7 +4,7 @@ from .views import home_view, admin_view, doctor_view, patient_view, contact_vie
 from django.conf.urls import url, include
 from django.views.generic import TemplateView
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from accounts.views import login_view, register_view, register_view2
+from accounts.views import login_view, register_view, register_view2, profile
 
 urlpatterns = [
     path('', home_view, name='home'),
@@ -20,7 +20,8 @@ urlpatterns = [
     path('bootstrap/', TemplateView.as_view(template_name='bootstrap/example.html')),
     path('admin/', admin.site.urls),
     url(r'^accounts/', include('accounts.urls')),
-    url(r'^appointments/', include('appointments.urls'))
+    url(r'^appointments/', include('appointments.urls')),
+
 ]
 
 urlpatterns += staticfiles_urlpatterns()

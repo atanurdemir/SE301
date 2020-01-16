@@ -13,7 +13,7 @@ from accounts.views import list_of_patients, \
     HospitalDeleteView, \
     SendPrescriptionView, \
     DepartmentCreateView, \
-    PatientUpdateView
+    profile
 
 
 appname = 'accounts'
@@ -28,7 +28,7 @@ urlpatterns = [
     url(r'registerDoctor/$', DoctorCreateView.as_view(), name="register_doctor"),
     url(r'commentCreate/$', CommentCreateView.as_view(), name="comment_create"),
     url(r'departmentCreate/$', DepartmentCreateView.as_view(), name="department_create"),
-
+    url(r'updateprofile/$', profile, name="profile"),
     url(r'^sendPrescription/$', SendPrescriptionView.as_view(), name="send_prescription"),
     path('<int:id>/', DoctorDetailView.as_view(), name="doctor_detail"),
     path('<int:id>/edit/', DoctorUpdateView.as_view(), name='doctor_edit'),
@@ -36,5 +36,6 @@ urlpatterns = [
     path('<int:id>/editH/', HospitalUpdateView.as_view(), name='hospital_edit'),
     path('<int:id>/deleteH/', HospitalDeleteView.as_view(), name='hospital_delete'),
     # path('<int:id>/editP/', PatientUpdateView.as_view(), name='patient_edit'),
+    path('profile/', profile, name='profile'),
 
 ]
