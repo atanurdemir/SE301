@@ -2,7 +2,7 @@ from django.conf.urls import url
 from . import views
 from django.urls import path
 from .views import list_of_appointments, list_of_patients, add_appointment, list_of_doctors, list_of_viewAppointments, \
-    list_of_searchPatients, list_of_messages, list_of_hospitals,  AppointmentHistory, list_of_recipes
+    list_of_searchPatients, list_of_messages, list_of_hospitals,  AppointmentHistory, list_of_recipes, AppointmentDeleteView
 app_name = 'appointments'
 
 urlpatterns = [
@@ -23,4 +23,5 @@ urlpatterns = [
     path('<int:pk>/', views.AppointmentUpdateView.as_view(), name='person_change'),
     path('ajax/load-districts/', views.load_districts, name='ajax_load_districts'),
     path('history/', views.AppointmentHistory.as_view(), name = 'appointment_history'),
+    path('<int:id>/deletea/', AppointmentDeleteView.as_view(), name='delete_appointment')
 ]

@@ -106,9 +106,11 @@ class Patient(models.Model):
 
 class Comments(models.Model):
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
-    patient = models.ForeignKey(Patient, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, default="")
     message = models.TextField()
 
+    def get_absolute_url(self):
+        return reverse("patient")
 
 class Day(models.Model):
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)

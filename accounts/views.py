@@ -47,7 +47,7 @@ def register_view(request):
         user.groups.add(group)
         if next:
             return redirect(next)
-        return redirect('login')
+        return redirect('admin')
 
     context = {
         'form': form,
@@ -65,8 +65,6 @@ def register_view2(request):
         user.save()
         group = Group.objects.get(name='patient')
         user.groups.add(group)
-
-
         if next:
             return redirect(next)
         return redirect('login')
@@ -75,7 +73,6 @@ def register_view2(request):
         'form': form,
     }
     return render(request, "accounts/signup.html", context)
-
 
 def logout_view(request):
     logout(request)
@@ -118,31 +115,16 @@ class CommentCreateView(SuccessMessageMixin,CreateView):
     fields = ("doctor","message")
     success_url = reverse_lazy('patient')
     template_name = 'accounts/comment_create.html'
-    # def form_valid(self, form):
-    #     print(form.cleaned_data)
-    #     return super().form_valid(form)
 
-    # def user(request):
-    #     Comments.patient = request.user
-    #
-    # def form_valid(self, form):
-    #     self.object = form.save(commit=False)
-    #     self.object.user = self.request.user
-    #     self.object.save()
-    #     return HttpResponseRedirect(self.get_success_url())
-    # def get_object(self):
-    #     id_ = self.user.id
-    #     return get_object_or_404(Patient, pk=id_)
-    #
-    # def form_valid(self, form):
-    #     print(form.cleaned_data)
-    #     return super().form_valid(form)
-    def dispatch(self, *args, **kwargs):
-        return super(CommentCreateView, self).dispatch(*args, **kwargs)
+    def user(request):
+        Comments.patient = request.user()
 
-    def get_queryset(self):
-        return Comments.objects.filter(patient=self.request.user())
-
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.user = self.request.user
+        self.object.save()
+        return super().form_valid(form)
+    success_message = "Your comment sent successfully."
 class SendPrescriptionView(SuccessMessageMixin, CreateView):
     form_class = SendPrescriptionForm
     queryset = Prescription.objects.all()

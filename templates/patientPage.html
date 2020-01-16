@@ -15,17 +15,16 @@
             <a class="nav-link" href="{% url "patient" %}">Patient Page</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Account</a>
+            <a class="nav-link" href="{% url "home" %}">Home Page</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Help Center</a>
+            <a class="nav-link" href="{% url "profile" %}">Account</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
+            <a class="nav-link" href="{% url "contact" %}">Contact</a>
         </li>
     </ul>
 {% endblock %}
-
 {% block rightNavbar %}
     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink"

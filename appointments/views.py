@@ -3,7 +3,7 @@ from .models import Appointment, Patient, Doctor, Comments, Hospitals, Prescript
 from django.http import HttpResponse, HttpResponseRedirect
 from .forms import AppointmentForm
 from django.views.generic import ListView, CreateView, DeleteView, UpdateView
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 
 # def appointment_list(request):
 #  appointments = Appointment.objects.all().order_by('PatientName');
@@ -79,10 +79,12 @@ def add_appointment(request):
 class AppointmentListView(ListView):
     model = Appointment
     context_object_name = 'appointments'
+from django.contrib.messages.views import SuccessMessageMixin
 
-class AppointmentCreateView(CreateView):
+class AppointmentCreateView(SuccessMessageMixin, CreateView):
     model = Appointment
     fields = ("Date", "Time", "province", "district", "hospital", "clinic", "doctor")
+
     def user(request):
         Appointment.patient = request.user()
 
@@ -91,8 +93,7 @@ class AppointmentCreateView(CreateView):
         self.object.user = self.request.user
         self.object.save()
         return HttpResponseRedirect(self.get_success_url())
-
-
+    success_message = "Your appointment making is done!"
 class AppointmentUpdateView(UpdateView):
     model = Appointment
     fields = ("Date", "province", "district", "hospital", "clinic", "doctor")
@@ -119,3 +120,16 @@ class AppointmentHistory(ListView):
 
     def get_queryset(self):
         return Appointment.objects.filter(user=self.request.user)
+
+
+from django.shortcuts import get_object_or_404
+class AppointmentDeleteView(DeleteView):
+    template_name = 'accounts/delete_appointment.html'
+    queryset = Appointment.objects.all()
+    success_url = reverse_lazy('appointments:list1')
+
+    def get_object(self):
+        id_ = self.kwargs.get("id")
+        return get_object_or_404(Appointment, id=id_)
+    def get_success_url(self):
+        return reverse('appointments:list1')
