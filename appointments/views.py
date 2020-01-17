@@ -80,9 +80,10 @@ class AppointmentListView(ListView):
     model = Appointment
     context_object_name = 'appointments'
 from django.contrib.messages.views import SuccessMessageMixin
-
+from .forms import AppointmentForm
 class AppointmentCreateView(SuccessMessageMixin, CreateView):
     model = Appointment
+    
     fields = ("Date", "Time", "province", "district", "hospital", "clinic", "doctor")
 
     def user(request):
@@ -120,9 +121,19 @@ class AppointmentHistory(ListView):
 
     def get_queryset(self):
         return Appointment.objects.filter(user=self.request.user)
+class AppointmentHistoryDoctor(ListView):
+    context_object_name = 'appointment_history2'
+    template_name = 'appointments/appointment_history2.html'
 
+
+    def dispatch(self, *args, **kwargs):
+        return super(AppointmentHistoryDoctor, self).dispatch(*args, **kwargs)
+
+    def get_queryset(self):
+        return Appointment.objects.filter(user=self.request.user)
 
 from django.shortcuts import get_object_or_404
+
 class AppointmentDeleteView(DeleteView):
     template_name = 'accounts/delete_appointment.html'
     queryset = Appointment.objects.all()
@@ -133,3 +144,18 @@ class AppointmentDeleteView(DeleteView):
         return get_object_or_404(Appointment, id=id_)
     def get_success_url(self):
         return reverse('appointments:list1')
+
+class AppointmentDeleteView2(DeleteView):
+    template_name = 'accounts/delete_appointment2.html'
+    queryset = Appointment.objects.all()
+    success_url = reverse_lazy('doctor')
+
+    def get_object(self):
+        id_ = self.kwargs.get("id")
+        return get_object_or_404(Appointment, id=id_)
+    def get_success_url(self):
+        return reverse('doctor')
+
+class FutureAppointment(ListView):
+    model = Appointment
+    template_name = 'appointments/appointment_future.html'
