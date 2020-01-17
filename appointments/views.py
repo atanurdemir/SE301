@@ -137,13 +137,13 @@ from django.shortcuts import get_object_or_404
 class AppointmentDeleteView(DeleteView):
     template_name = 'accounts/delete_appointment.html'
     queryset = Appointment.objects.all()
-    success_url = reverse_lazy('appointments:list1')
+    success_url = reverse_lazy('patient')
 
     def get_object(self):
         id_ = self.kwargs.get("id")
         return get_object_or_404(Appointment, id=id_)
     def get_success_url(self):
-        return reverse('appointments:list1')
+        return reverse('patient')
 
 class AppointmentDeleteView2(DeleteView):
     template_name = 'accounts/delete_appointment2.html'
